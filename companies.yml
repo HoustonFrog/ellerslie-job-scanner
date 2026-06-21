@@ -1,0 +1,624 @@
+# Companies in Ellerslie and surrounding suburbs - Auckland
+# Verified 2026-06-21. Set enabled: false to skip a company.
+# Companies near Ellerslie School (134 Main Highway) marked with priority: high
+#
+# careers_url: leave empty for seek-only companies (Seek scanner covers them)
+# Only include URLs that actually return job listings via API or HTML scraping.
+
+companies:
+
+  # ===== ELLERSLIE - Near Ellerslie School (Main Highway) =====
+
+  - name: "Ministry of Social Development"
+    location: "Ellerslie"
+    industry: "Government"
+    careers_url: ""
+    address: "65 Main Highway"
+    priority: high
+    enabled: true
+
+  - name: "Ministry of Justice"
+    location: "Ellerslie"
+    industry: "Government"
+    careers_url: ""
+    address: "65B Main Highway"
+    priority: high
+    enabled: true
+
+  - name: "JDW Chartered Accountants"
+    location: "Ellerslie"
+    industry: "Accounting"
+    careers_url: ""
+    address: "127 Main Highway"
+    priority: high
+    enabled: true
+
+  - name: "MDT Chartered Accountants"
+    location: "Ellerslie"
+    industry: "Accounting"
+    careers_url: ""
+    address: "195 Main Highway"
+    priority: high
+    enabled: true
+
+  - name: "NZ Dental Association"
+    location: "Ellerslie"
+    industry: "Professional Association"
+    careers_url: ""
+    address: "195 Main Highway"
+    priority: high
+    enabled: true
+
+  - name: "Latitude Homes"
+    location: "Ellerslie"
+    industry: "Construction"
+    careers_url: ""
+    address: "195 Main Highway"
+    priority: high
+    enabled: true
+
+  # ===== ELLERSLIE - Millennium Centre (600-604 Great South Road) =====
+
+  - name: "American Express"
+    location: "Ellerslie"
+    industry: "Financial Services"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Salesforce NZ"
+    location: "Ellerslie"
+    industry: "Technology"
+    careers_url: "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site"
+    address: "666 Great South Road"
+    enabled: true
+
+  - name: "Toyota Finance NZ"
+    location: "Ellerslie"
+    industry: "Automotive Finance"
+    careers_url: ""
+    address: "602 Great South Road"
+    enabled: true
+
+  - name: "Avis Budget Group"
+    location: "Ellerslie"
+    industry: "Vehicle Rental"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Adidas NZ"
+    location: "Ellerslie"
+    industry: "Consumer Goods"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "L'Oreal NZ"
+    location: "Ellerslie"
+    industry: "Consumer Goods"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Bridgestone NZ"
+    location: "Ellerslie"
+    industry: "Automotive"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Siemens NZ"
+    location: "Ellerslie"
+    industry: "Engineering / Technology"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Veolia NZ"
+    location: "Ellerslie"
+    industry: "Environmental Services"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Instant Finance"
+    location: "Ellerslie"
+    industry: "Consumer Finance"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Green Cross Health"
+    location: "Ellerslie"
+    industry: "Healthcare"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Endace"
+    location: "Ellerslie"
+    industry: "Network Security"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Hilti NZ"
+    location: "Ellerslie"
+    industry: "Construction Tools"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Getinge"
+    location: "Ellerslie"
+    industry: "Medical Technology"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "FleetPartners NZ"
+    location: "Ellerslie"
+    industry: "Vehicle Leasing / Finance"
+    careers_url: ""
+    address: "602 Great South Road"
+    enabled: true
+
+  - name: "Acciona NZ"
+    location: "Ellerslie"
+    industry: "Infrastructure / Energy"
+    careers_url: "https://acciona.wd3.myworkdayjobs.com/ACCIONA_Employment_Channel"
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Securecom"
+    location: "Ellerslie"
+    industry: "IT Security"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  - name: "Z Energy"
+    location: "Ellerslie"
+    industry: "Energy"
+    careers_url: ""
+    address: "600 Great South Road"
+    enabled: true
+
+  # ===== ELLERSLIE - Central Park (660-670 Great South Road) =====
+
+  - name: "T&G Global"
+    location: "Ellerslie"
+    industry: "Agribusiness / Fresh Produce"
+    careers_url: ""
+    address: "660 Great South Road"
+    enabled: true
+
+  - name: "Novotel Auckland Ellerslie"
+    location: "Ellerslie"
+    industry: "Hospitality"
+    careers_url: ""
+    address: "72-112 Greenlane East"
+    enabled: true
+
+  # ===== ELLERSLIE - Other =====
+
+  - name: "EnviroNZ"
+    location: "Ellerslie"
+    industry: "Waste Management"
+    careers_url: "https://careers.environz.co.nz/search?source=CP"
+    address: "Ellerslie"
+    enabled: true
+
+  - name: "Peat Johnson Murray"
+    location: "Ellerslie"
+    industry: "Chartered Accountants"
+    careers_url: ""
+    address: "642 Great South Road"
+    enabled: true
+
+  - name: "Carter & Associates"
+    location: "Ellerslie"
+    industry: "Chartered Accountants"
+    careers_url: ""
+    address: "6 Mitchelson Street"
+    enabled: true
+
+  # ===== GREENLANE =====
+
+  - name: "Health NZ Te Whatu Ora"
+    location: "Greenlane"
+    industry: "Healthcare / Government"
+    careers_url: ""
+    address: "214 Green Lane West"
+    enabled: true
+
+  - name: "Greenlane Chartered Accountants"
+    location: "Greenlane"
+    industry: "Accounting"
+    careers_url: ""
+    address: "280 Great South Road"
+    enabled: true
+
+  - name: "Armstrong Motor Group"
+    location: "Greenlane"
+    industry: "Automotive Retail"
+    careers_url: ""
+    address: "500 Great South Road"
+    enabled: true
+
+  # ===== REMUERA =====
+
+  - name: "Bayleys Real Estate"
+    location: "Remuera"
+    industry: "Real Estate"
+    careers_url: "https://bayleysrealestate.teamtailor.com/jobs"
+    address: "303 Remuera Road"
+    enabled: true
+
+  - name: "SBA Small Business Accounting"
+    location: "Remuera"
+    industry: "Accounting"
+    careers_url: ""
+    address: "648 Remuera Road"
+    enabled: true
+
+  # ===== PENROSE - Major Industrial/Commercial Area =====
+
+  - name: "Fisher & Paykel Appliances"
+    location: "Penrose"
+    industry: "Manufacturing / Consumer Electronics"
+    careers_url: "https://haier.wd3.myworkdayjobs.com/FPA_External_Career_Site"
+    address: "830 Great South Road"
+    enabled: true
+
+  - name: "PlaceMakers (Fletcher Building)"
+    location: "Penrose"
+    industry: "Building Materials / Retail"
+    careers_url: "https://www.placemakers.co.nz/online/careers"
+    address: "810 Great South Road"
+    enabled: true
+
+  - name: "Visy Glass Operations NZ"
+    location: "Penrose"
+    industry: "Glass Manufacturing / Packaging"
+    careers_url: "https://www.visy.com/careers"
+    address: "752 Great South Road"
+    enabled: true
+
+  - name: "NZ Safety Blackwoods (Wesfarmers)"
+    location: "Penrose"
+    industry: "Safety Equipment / Industrial Supplies"
+    careers_url: "https://nzsafetyblackwoods.co.nz/about-us/careers"
+    address: "732 Great South Road"
+    enabled: true
+
+  - name: "Oji Fibre Solutions"
+    location: "Penrose"
+    industry: "Packaging / Paper Manufacturing"
+    careers_url: "https://ojifs.com/careers/"
+    address: "35 Hugo Johnston Drive"
+    enabled: true
+
+  - name: "Sistema Plastics"
+    location: "Penrose"
+    industry: "Plastics Manufacturing"
+    careers_url: "https://www.sistemaplastics.com/careers"
+    address: "65 Hugo Johnston Drive"
+    enabled: true
+
+  - name: "Freightways Group"
+    location: "Penrose"
+    industry: "Logistics / Courier Services"
+    careers_url: "https://www.freightways.co.nz"
+    address: "32 Botha Road"
+    enabled: true
+
+  - name: "New Zealand Couriers (Freightways)"
+    location: "Penrose"
+    industry: "Courier / Logistics"
+    careers_url: "https://www.nzcouriers.co.nz/careers.html"
+    address: "Penrose"
+    enabled: true
+
+  - name: "Air Liquide NZ"
+    location: "Penrose"
+    industry: "Industrial Gases / Manufacturing"
+    careers_url: ""
+    address: "19 Maurice Road"
+    enabled: true
+
+  - name: "Eurotec Ltd"
+    location: "Penrose"
+    industry: "HVAC / Control & Measurement"
+    careers_url: ""
+    address: "Unit C, 750 Great South Road"
+    enabled: true
+
+  - name: "Cooke Industries"
+    location: "Penrose"
+    industry: "HVAC / Air Handling Manufacturing"
+    careers_url: ""
+    address: "31 Station Road East"
+    enabled: true
+
+  - name: "LINAK NZ"
+    location: "Penrose"
+    industry: "Electric Actuator Solutions"
+    careers_url: ""
+    address: "Unit G, 61 Hugo Johnston Drive"
+    enabled: true
+
+  - name: "L W Bonney and Sons"
+    location: "Penrose"
+    industry: "Bulk Liquids / Transport & Logistics"
+    careers_url: ""
+    address: "882 Great South Road"
+    enabled: true
+
+  - name: "Concentric Engineered Solutions"
+    location: "Penrose"
+    industry: "Engineering / Automation"
+    careers_url: ""
+    address: "388B Church Street"
+    enabled: true
+
+  - name: "Credit Union Auckland (NZCU)"
+    location: "Penrose"
+    industry: "Financial Services"
+    careers_url: ""
+    address: "698 Great South Road"
+    enabled: true
+
+  - name: "Humphries Associates"
+    location: "Penrose"
+    industry: "Accounting / Business Advisory"
+    careers_url: ""
+    address: "73 Church Street"
+    enabled: true
+
+  - name: "BTI Logistics"
+    location: "Penrose"
+    industry: "Warehousing / Distribution"
+    careers_url: ""
+    address: "Neilson Street"
+    enabled: true
+
+  - name: "GO Rentals"
+    location: "Penrose"
+    industry: "Vehicle Rental"
+    careers_url: ""
+    address: "3-5 Walls Road"
+    enabled: true
+
+  # ===== MT WELLINGTON / MOUNT WELLINGTON =====
+
+  - name: "Sky TV (Sky Network Television)"
+    location: "Mt Wellington"
+    industry: "Media / Broadcasting"
+    careers_url: "https://www.sky.co.nz/careers"
+    address: "10 Panorama Road"
+    enabled: true
+
+  - name: "Coca-Cola Europacific Partners NZ"
+    location: "Mt Wellington"
+    industry: "Beverage Manufacturing / FMCG"
+    careers_url: "https://www.cocacolaep.com/nz/careers/"
+    address: "The Oasis, 19 Carbine Road"
+    enabled: true
+
+  - name: "Tip Top Ice Cream (Froneri)"
+    location: "Mt Wellington"
+    industry: "Food Manufacturing / FMCG"
+    careers_url: "https://www.tiptop.co.nz/jobs"
+    address: "113 Carbine Road"
+    enabled: true
+
+  - name: "Forbo Siegling NZ"
+    location: "Mt Wellington"
+    industry: "Conveyor Belt Manufacturing"
+    careers_url: "https://www.forbo.com/movement/en-nz/career/puqd5b"
+    address: "10 George Bourke Drive"
+    enabled: true
+
+  - name: "Mainfreight"
+    location: "Mt Wellington"
+    industry: "Logistics / Transport"
+    careers_url: "https://www.mainfreight.com/global/en-nz/mainfreight-careers"
+    address: "Mt Wellington"
+    enabled: true
+
+  - name: "Kmart NZ (Sylvia Park)"
+    location: "Mt Wellington"
+    industry: "Retail"
+    careers_url: "https://jobs.kmart.com.au/KMARTAUNZ/"
+    address: "286 Mt Wellington Highway"
+    enabled: true
+
+  - name: "ANZ (Sylvia Park - ANZ Raranga)"
+    location: "Mt Wellington"
+    industry: "Banking / Financial Services"
+    careers_url: ""
+    address: "Sylvia Park, Mt Wellington Highway"
+    enabled: true
+
+  # ===== NEWMARKET =====
+
+  - name: "Mercury NZ (Mercury Energy)"
+    location: "Newmarket"
+    industry: "Energy / Utilities"
+    careers_url: "https://careers.mercury.co.nz/home"
+    address: "33 Broadway"
+    enabled: true
+
+  - name: "Vector Limited"
+    location: "Newmarket"
+    industry: "Energy / Utilities"
+    careers_url: "https://vector.co.nz/about-us/careers"
+    address: "110 Carlton Gore Road"
+    enabled: true
+
+  - name: "Tonkin + Taylor"
+    location: "Newmarket"
+    industry: "Environmental / Engineering Consultancy"
+    careers_url: "https://www.tonkintaylor.com/nz/careers/"
+    address: "105 Carlton Gore Road"
+    enabled: true
+
+  - name: "Aurecon"
+    location: "Newmarket"
+    industry: "Engineering / Advisory"
+    careers_url: "https://www.aurecongroup.com/careers"
+    address: "Level 3, Te Tihi, 110 Carlton Gore Road"
+    enabled: true
+
+  - name: "Moore Markhams Auckland"
+    location: "Newmarket"
+    industry: "Chartered Accountants / Business Advisory"
+    careers_url: ""
+    address: "Level 1, 103 Carlton Gore Road"
+    enabled: true
+
+  - name: "Trust Accountants (Nexia Auckland)"
+    location: "Newmarket"
+    industry: "Chartered Accountants / Trusts & Estates"
+    careers_url: ""
+    address: "Level 3, Unit 4, 27 Gillies Avenue"
+    enabled: true
+
+  - name: "Nexia NZ"
+    location: "Newmarket"
+    industry: "Chartered Accountants / Business Advisory"
+    careers_url: "https://www.nexia.co.nz/"
+    address: "Newmarket"
+    enabled: true
+
+  - name: "James Bell Accounting & Advisory"
+    location: "Newmarket"
+    industry: "Chartered Accountants"
+    careers_url: ""
+    address: "Newmarket"
+    enabled: true
+
+  - name: "DFK Orb360"
+    location: "Newmarket"
+    industry: "Accounting / Tax Advisory"
+    careers_url: ""
+    address: "2G/6 Kingdon Street"
+    enabled: true
+
+  - name: "DM Gibson Accountants"
+    location: "Newmarket"
+    industry: "Chartered Accountants"
+    careers_url: ""
+    address: "Newmarket"
+    enabled: true
+
+  - name: "Mercedes-Benz NZ"
+    location: "Newmarket"
+    industry: "Automotive / Wholesale"
+    careers_url: ""
+    address: "Level 3 Office Tower, 277 Broadway"
+    enabled: true
+
+  - name: "HealthLink NZ"
+    location: "Newmarket"
+    industry: "Health IT"
+    careers_url: ""
+    address: "Level 3, 13-15 Teed Street"
+    enabled: true
+
+  # ===== EPSOM =====
+
+  - name: "Allevia Hospital Epsom (formerly MercyAscot)"
+    location: "Epsom"
+    industry: "Healthcare / Private Hospital"
+    careers_url: ""
+    address: "98 Mountain Road"
+    enabled: true
+
+  - name: "Greenlane Clinical Centre (Health NZ)"
+    location: "Epsom"
+    industry: "Healthcare / Public Hospital"
+    careers_url: ""
+    address: "214 Green Lane West"
+    enabled: true
+
+  - name: "Auckland Medical Specialists"
+    location: "Epsom"
+    industry: "Healthcare / Medical Specialists"
+    careers_url: ""
+    address: "183 Gillies Avenue"
+    enabled: true
+
+  - name: "Accounting Plus Solutions"
+    location: "Epsom"
+    industry: "Accounting"
+    careers_url: ""
+    address: "Epsom / Newmarket"
+    enabled: true
+
+  - name: "JAY Accounting & Taxation"
+    location: "Epsom"
+    industry: "Accounting / Tax"
+    careers_url: ""
+    address: "620 Manukau Road"
+    enabled: true
+
+  - name: "RPL Accountants"
+    location: "Epsom"
+    industry: "Accounting"
+    careers_url: ""
+    address: "395A Manukau Road"
+    enabled: true
+
+  - name: "Auckland Chartered Accountants"
+    location: "Epsom"
+    industry: "Accounting"
+    careers_url: ""
+    address: "10 Manukau Road"
+    enabled: true
+
+  - name: "BBR Accountants"
+    location: "Epsom"
+    industry: "Accounting / Business Advisory"
+    careers_url: ""
+    address: "Level 1, 7 Owens Road"
+    enabled: true
+
+  # ===== ONE TREE HILL / ROYAL OAK =====
+
+  - name: "Stardome Observatory"
+    location: "Royal Oak"
+    industry: "Education / Science / Tourism"
+    careers_url: ""
+    address: "670 Manukau Road"
+    enabled: true
+
+  - name: "Bayleys Real Estate (One Tree Hill)"
+    location: "Royal Oak"
+    industry: "Real Estate"
+    careers_url: "https://bayleysrealestate.teamtailor.com/jobs"
+    address: "778 Manukau Road"
+    enabled: true
+
+  - name: "ASMA Ltd Chartered Accountants"
+    location: "Royal Oak"
+    industry: "Chartered Accountants / Audit"
+    careers_url: ""
+    address: "45/691 Manukau Road"
+    enabled: true
+
+  - name: "Gilligan Rowe & Associates"
+    location: "Royal Oak"
+    industry: "Chartered Accountants / Property Tax"
+    careers_url: ""
+    address: "Royal Oak / Auckland"
+    enabled: true
+
+  - name: "Eden Palmer Prewett (formerly Eden Perich Prewett)"
+    location: "Onehunga"
+    industry: "Chartered Accountants"
+    careers_url: ""
+    address: "329B Onehunga Mall"
+    enabled: true
