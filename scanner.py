@@ -139,6 +139,20 @@ def is_agency(company: str) -> bool:
     return any(agency in c for agency in config.AGENCY_BLOCKLIST)
 
 
+def _location_rejected(location: str) -> bool:
+    """Return True if the location is explicitly outside the target area."""
+    loc = location.lower()
+    if any(area in loc for area in config.LOCATION_ALLOW):
+        return False
+    return any(reject in loc for reject in config.LOCATION_REJECT)
+
+
+def _location_accepted(location: str) -> bool:
+    """Return True if the location is within the target area."""
+    loc = location.lower()
+    return any(area in loc for area in config.LOCATION_ALLOW)
+
+
 def _normalize_title(title: str) -> str:
     """Strip numeric prefixes like '2898 - ' for comparison."""
     import re
@@ -344,6 +358,7 @@ def cmd_scan(dry_run: bool = False, no_enrich: bool = False):
     skipped_title = 0
     skipped_agency = 0
     skipped_dup = 0
+    skipped_location = 0
 
     for job in all_jobs:
         if job["url"] in seen_urls:
@@ -359,9 +374,13 @@ def cmd_scan(dry_run: bool = False, no_enrich: bool = False):
             skipped_agency += 1
             continue
 
+        if _location_rejected(job.get("location", "")):
+            skipped_location += 1
+            continue
+
         filtered.append(job)
 
-    print(f"  Passed: {len(filtered)} | Skipped: title={skipped_title}, agency={skipped_agency}, dup={skipped_dup}")
+    print(f"  Passed: {len(filtered)} | Skipped: title={skipped_title}, agency={skipped_agency}, location={skipped_location}, dup={skipped_dup}")
 
     # 4b. Merge Seek + LinkedIn + career_page duplicates for the same role
     filtered = _merge_duplicates(filtered)
@@ -447,6 +466,13 @@ def cmd_scan(dry_run: bool = False, no_enrich: bool = False):
         enriched = [enrich._default_enrichment(j) for j in new_jobs]
     else:
         enriched = enrich.enrich_jobs(new_jobs)
+
+    # 6b. Post-enrichment location filter — only keep jobs in target suburbs
+    before_count = len(enriched)
+    enriched = [j for j in enriched if _location_accepted(j.location)]
+    dropped = before_count - len(enriched)
+    if dropped:
+        print(f"  Post-enrichment location filter: removed {dropped} jobs outside target area")
 
     # 7. Generate report
     print(f"\n[7/7] Generating HTML report...")

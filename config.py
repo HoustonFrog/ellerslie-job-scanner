@@ -93,6 +93,16 @@ LOCATION_PROXIMITY = {
     "epsom": 3,
 }
 
+LOCATION_REJECT = [
+    "cbd", "central auckland", "city centre",
+    "north shore", "northcote", "takapuna", "albany", "rosedale", "browns bay",
+    "manukau", "botany", "howick", "pakuranga", "east tamaki", "flat bush",
+    "henderson", "new lynn", "te atatu", "west auckland",
+    "papakura", "pukekohe", "south auckland",
+    "hamilton", "wellington", "christchurch", "tauranga", "dunedin", "queenstown",
+    "remote",
+]
+
 SEEK_SEARCH_TEMPLATE = "https://www.seek.co.nz/jobs?keywords={keyword}&where={location}&daterange=14"
 LINKEDIN_SEARCH_TEMPLATE = "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords={keyword}&location=Auckland%2C+New+Zealand&f_TPR=r1209600&start={start}"
 LINKEDIN_REQUEST_DELAY = 3
