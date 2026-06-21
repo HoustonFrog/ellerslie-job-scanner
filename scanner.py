@@ -153,6 +153,12 @@ def _location_accepted(location: str) -> bool:
     return any(area in loc for area in config.LOCATION_ALLOW)
 
 
+def _is_cbd_company(company: str) -> bool:
+    """Return True if the company is known to be CBD-based."""
+    c = company.lower()
+    return any(name in c for name in config.CBD_COMPANIES)
+
+
 def _normalize_title(title: str) -> str:
     """Strip numeric prefixes like '2898 - ' for comparison."""
     import re
@@ -469,7 +475,13 @@ def cmd_scan(dry_run: bool = False, no_enrich: bool = False):
 
     # 6b. Post-enrichment location filter — only keep jobs in target suburbs
     before_count = len(enriched)
-    enriched = [j for j in enriched if _location_accepted(j.location)]
+    kept = []
+    for j in enriched:
+        if _is_cbd_company(j.company):
+            continue
+        if _location_accepted(j.location):
+            kept.append(j)
+    enriched = kept
     dropped = before_count - len(enriched)
     if dropped:
         print(f"  Post-enrichment location filter: removed {dropped} jobs outside target area")

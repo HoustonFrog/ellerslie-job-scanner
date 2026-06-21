@@ -153,7 +153,7 @@ For each job below, provide:
 6. score_company: 1-5, company quality and career prospects (5 = large well-known company with clear growth paths; 3 = solid mid-size; 1 = very small or unclear)
 7. score_experience: 1-5, how suitable for a mid-level professional (5 = ideal mid-level 2-5 years; 3 = junior or slightly senior; 1 = entry-level data entry or CFO-level)
 8. salary_range: If salary is mentioned in the description, extract it. If not, estimate a realistic NZD salary range based on the role, company, and Auckland market rates (e.g. "$65,000 - $80,000" or "$35 - $45/hr"). Always provide a range.
-9. suburb: If the job description mentions a specific Auckland suburb or area (e.g. Ellerslie, Greenlane, Penrose, Mt Wellington, Newmarket, Epsom, Remuera, One Tree Hill, Onehunga, CBD, Parnell), extract it. If not mentioned, use your knowledge of the company's Auckland office location if you are confident. Return "" if unknown.
+9. suburb: ONLY extract a suburb if the job description explicitly mentions a specific Auckland suburb or area name (e.g. Ellerslie, Greenlane, Penrose, Mt Wellington, Newmarket, Epsom, Remuera, One Tree Hill, Onehunga, CBD, Parnell). Do NOT guess based on company name — many large companies (Big 4, banks, consultancies) have CBD offices, not suburban ones. Return "" if no suburb is explicitly stated in the description.
 
 Jobs:
 {json.dumps(jobs_input, indent=2)}

@@ -93,6 +93,26 @@ LOCATION_PROXIMITY = {
     "epsom": 3,
 }
 
+CBD_COMPANIES = [
+    "ey", "ernst & young", "ernst young",
+    "deloitte",
+    "pwc", "pricewaterhousecoopers",
+    "kpmg",
+    "anz", "anz bank",
+    "westpac",
+    "bnz", "bank of new zealand",
+    "asb", "asb bank",
+    "accenture",
+    "minterellison", "minter ellison",
+    "russell mcveagh",
+    "bell gully",
+    "chapman tripp",
+    "buddle findlay",
+    "simpson grierson",
+    "nzx",
+    "reserve bank",
+]
+
 LOCATION_REJECT = [
     "cbd", "central auckland", "city centre",
     "north shore", "northcote", "takapuna", "albany", "rosedale", "browns bay",
