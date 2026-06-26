@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ellerslie Area Jobs - 27 June 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --bg-elevated: #ffffff;
+      --text: #18181b;
+      --text-secondary: #52525b;
+      --text-tertiary: #a1a1aa;
+      --border: #e4e4e7;
+      --accent: #4f46e5;
+      --accent-hover: #4338ca;
+      --accent-subtle: #eef2ff;
+      --score-high: #059669;
+      --score-mid: #4f46e5;
+      --score-low: #a1a1aa;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 1px 2px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.04);
+      --shadow-hover: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09090b;
+        --bg-elevated: #18181b;
+        --text: #fafafa;
+        --text-secondary: #a1a1aa;
+        --text-tertiary: #71717a;
+        --border: #27272a;
+        --accent: #818cf8;
+        --accent-hover: #a5b4fc;
+        --accent-subtle: #1e1b4b;
+        --score-high: #34d399;
+        --score-mid: #818cf8;
+        --score-low: #71717a;
+        --shadow: 0 1px 2px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.15);
+        --shadow-hover: 0 8px 24px rgba(0,0,0,0.3);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px 48px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .accent-bar {
+      height: 4px;
+      background: var(--accent);
+      margin: 0 -20px 32px;
+    }
+
+    .header {
+      padding: 0 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      font-size: 1.625rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    .header .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      text-align: left;
+    }
+
+    .stat-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tab {
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+      user-select: none;
+    }
+
+    .tab:hover { color: var(--text-secondary); }
+    .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .tab-count {
+      display: inline-block;
+      background: var(--border);
+      color: var(--text-secondary);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 99px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .tab.active .tab-count {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Sort bar */
+    .sort-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .sort-label {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .sort-btn {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .sort-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .sort-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* Cards */
+    .job-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px 20px 28px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .job-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .job-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.6;
+    }
+
+    .badge-full-time { background: #eef2ff; color: #3730a3; }
+    .badge-part-time { background: #f5f3ff; color: #5b21b6; }
+    .badge-casual { background: #fefce8; color: #854d0e; }
+    .badge-contract { background: #fdf2f8; color: #9d174d; }
+    .badge-unknown { background: #f4f4f5; color: #52525b; }
+
+    .badge-source-seek { background: #fef2f2; color: #991b1b; }
+    .badge-source-career { background: #ecfdf5; color: #065f46; }
+    .badge-source-both { background: #eff6ff; color: #1e40af; }
+    .badge-source-linkedin { background: #eff6ff; color: #1d4ed8; }
+    .badge-source-seek-li { background: #eff6ff; color: #1e40af; }
+    .badge-source-li-career { background: #ecfdf5; color: #065f46; }
+    .badge-source-all { background: #eef2ff; color: #3730a3; }
+
+    .badge-new {
+      background: #dc2626;
+      color: #fff;
+      animation: pulse-new 2s ease-in-out 3;
+    }
+
+    @keyframes pulse-new {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .badge-full-time { background: #1e1b4b; color: #a5b4fc; }
+      .badge-part-time { background: #2e1065; color: #c4b5fd; }
+      .badge-casual { background: #422006; color: #fde68a; }
+      .badge-contract { background: #500724; color: #fbcfe8; }
+      .badge-unknown { background: #27272a; color: #a1a1aa; }
+
+      .badge-source-seek { background: #450a0a; color: #fca5a5; }
+      .badge-source-career { background: #022c22; color: #6ee7b7; }
+      .badge-source-both { background: #172554; color: #93c5fd; }
+      .badge-source-linkedin { background: #172554; color: #93c5fd; }
+      .badge-source-seek-li { background: #172554; color: #93c5fd; }
+      .badge-source-li-career { background: #022c22; color: #6ee7b7; }
+      .badge-source-all { background: #1e1b4b; color: #a5b4fc; }
+
+      .badge-new { background: #ef4444; }
+    }
+
+    .date-tag {
+      color: var(--text-tertiary);
+      font-size: 0.75rem;
+      margin-left: auto;
+    }
+
+    /* Title */
+    .job-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .job-title a { color: var(--text); text-decoration: none; }
+    .job-title a:hover { color: var(--accent); }
+
+    /* Meta line: Company / Location / Salary */
+    .job-meta-line {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .meta-sep {
+      color: var(--text-tertiary);
+      margin: 0 2px;
+    }
+
+    .job-salary {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .salary-est {
+      color: var(--text-tertiary);
+      font-weight: 400;
+      font-size: 0.75rem;
+    }
+
+    /* Score bar */
+    .score-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 8px 12px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+    }
+
+    .score-total {
+      font-size: 1.375rem;
+      font-weight: 700;
+      min-width: 52px;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .score-total.score-high { color: var(--score-high); }
+    .score-total.score-mid { color: var(--score-mid); }
+    .score-total.score-low { color: var(--score-low); }
+
+    .score-max {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-tertiary);
+    }
+
+    .score-dims {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      flex: 1;
+    }
+
+    .score-dim {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+    }
+
+    .dim-label {
+      color: var(--text-tertiary);
+      min-width: 62px;
+    }
+
+    .mini-bar {
+      display: inline-block;
+      width: 40px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      vertical-align: middle;
+    }
+
+    .mini-bar-fill {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    /* Summary */
+    .job-summary {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      line-height: 1.55;
+    }
+
+    /* Details */
+    details { margin-top: 6px; }
+
+    summary {
+      cursor: pointer;
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-weight: 500;
+      user-select: none;
+    }
+
+    summary:hover { color: var(--accent-hover); }
+    details[open] summary { margin-bottom: 8px; }
+
+    .detail-content {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      padding: 12px 14px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      line-height: 1.6;
+    }
+
+    .detail-content p { margin-bottom: 4px; }
+    .detail-content a { color: var(--accent); word-break: break-all; }
+
+    .company-intro {
+      font-size: 0.875rem;
+      color: var(--text-tertiary);
+      font-style: italic;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .job-description {
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .job-description ul, .job-description ol { padding-left: 1.2em; margin: 6px 0; }
+    .job-description li { margin-bottom: 3px; }
+    .job-description p { margin-bottom: 6px; }
+    .job-description strong { color: var(--text); }
+
+    /* Actions */
+    .card-actions { margin-top: 14px; }
+
+    .apply-btn {
+      display: inline-block;
+      padding: 8px 22px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .apply-btn:hover { background: var(--accent-hover); }
+    .apply-btn:active { transform: scale(0.98); }
+
+    .apply-btn-alt {
+      background: var(--bg-elevated);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      margin-left: 8px;
+    }
+
+    .apply-btn-alt:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--text-tertiary);
+      font-size: 0.875rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px 0 0;
+      color: var(--text-tertiary);
+      font-size: 0.75rem;
+      border-top: 1px solid var(--border);
+      margin-top: 32px;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      body { padding: 0 14px 36px; }
+      .accent-bar { margin: 0 -14px 24px; }
+      .header h1 { font-size: 1.3rem; }
+      .stats { gap: 20px; }
+      .stat-num { font-size: 1.4rem; }
+      .job-card { padding: 16px 18px 16px 22px; }
+      .date-tag { margin-left: 0; }
+      .score-dims { gap: 4px 10px; }
+      .dim-label { min-width: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="accent-bar"></div>
+  <header class="header">
+    <h1>Ellerslie Area Job Scan</h1>
+    <p class="subtitle">Accounting & Finance roles near Ellerslie School - 27 June 2026</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">14</div>
+        <div class="stat-label">Total Jobs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">New</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Sources</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('ellerslie')">Ellerslie<span class="tab-count">1</span></div>
+      <div class="tab" onclick="switchTab('other')">Other Areas<span class="tab-count">13</span></div>
+    </div>
+
+    <div class="sort-bar">
+      <span class="sort-label">Sort:</span>
+      <button class="sort-btn active" onclick="sortJobs('score')">Score</button>
+      <button class="sort-btn" onclick="sortJobs('date')">Date</button>
+      <button class="sort-btn" onclick="sortJobs('salary')">Salary</button>
+    </div>
+
+    <div id="panel-ellerslie" class="tab-panel active">
+    <div class="job-card" data-score="3.6" data-date="2026-06-15" data-salary="$65,000 - $78,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-contract">Contract/Temp / Fixed Term</span>
+        <span class="badge badge-source-both">Seek + Career</span>
+        
+        <span class="date-tag">Posted: 2026-06-15</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92736248" target="_blank" rel="noopener">Payroll Administrator</a></h2>
+      <p class="job-meta-line">EnviroNZ <span class="meta-sep">/</span> Ellerslie, Auckland <span class="meta-sep">/</span> <span class="job-salary">$65,000 - $78,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.6<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Fixed-term Payroll Administrator role through February 2027, supporting a nationwide workforce of over 1,200 employees at an environmental services company. The role suits a seasoned payroll professional who values accuracy and collaborative teamwork in a high-performing environment.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">EnviroNZ is a New Zealand environmental and resource management services company with a large national workforce across multiple operations.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p>If you’re a seasoned payroll professional who takes pride in accuracy and enjoys contributing to a collaborative, high-performing team, this is a role where your expertise will be recognised from the outset. Supporting a workforce of more than 1,200 employees nationwide, our payroll function is central to our operations, and we’re seeking a capable <strong>Payroll Administrator</strong> to join us on a fixed-term contract through to <strong>February 2027</strong>.</p>
+<p>This is a busy, end-to-end payroll position managing both weekly and monthly pay cycles. You’ll partner closely with our People &amp; Culture team, Finance, and branches across the country, while also providing support and troubleshooting for our Kronos Time &amp; Attendance system.</p>
+<p>To succeed, you’ll bring a high level of attention to detail, strong time management skills, and a composed, solutions-focused mindset. We’re looking for someone who is collaborative, adaptable, and ready to make an immediate impact.</p>
+<p><strong>What we’re looking for</strong></p>
+<ul>
+<li>2+ years of payroll experience in a medium‑to‑large organisation</li>
+<li>Hands‑on experience with Chris21 payroll software and Kronos Time &amp; Attendance</li>
+<li>Strong understanding of NZ employment legislation, including the Employment Relations Act 2000, Wages Protection Act 1983, and Holidays Act 2003</li>
+<li>Flexibility to adjust hours when required</li>
+<li>In‑depth knowledge of KiwiSaver and PAYE processes, including preparation and filing</li>
+<li>Advanced MS Office skills and confidence working across multiple systems</li>
+</ul>
+<p>The successful applicant will be required to undertake a Pre-Employment Health Assessment (including drugs test) and complete a Ministry of Justice criminal records check, the results of which must be to EnviroNZ’s satisfaction. <strong>Applicants must also have NZ residency or a valid NZ work visa.</strong> </p>
+<p>If you wish to apply for this position please click apply now and complete the <strong>online application form</strong>. You must ensure you submit an updated version of your CV in order for your application to be considered.</p></div></div>
+          <p><strong>Source:</strong> Career Page</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92736248" target="_blank" rel="noopener">https://nz.seek.com/job/92736248</a></p>
+          <p><strong>Career Page:</strong> <a href="https://careers.environz.co.nz/jobdetails/ajid/5xOo7/2898-Payroll-Administrator,7042.html" target="_blank" rel="noopener">https://careers.environz.co.nz/jobdetails/ajid/5xOo7/2898-Payroll-Administrator,7042.html</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92736248" class="apply-btn" target="_blank" rel="noopener">Seek</a>
+        <a href="https://careers.environz.co.nz/jobdetails/ajid/5xOo7/2898-Payroll-Administrator,7042.html" class="apply-btn apply-btn-alt" target="_blank" rel="noopener">Career Page</a>
+      </div>
+    </div>
+    </div>
+
+    <div id="panel-other" class="tab-panel">
+    <div class="job-card" data-score="3.8" data-date="2026-06-24" data-salary="$90,000 - $115,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        
+        <span class="date-tag">Posted: 2026-06-24</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92908891" target="_blank" rel="noopener">Senior Financial Accountant\u002FBusiness Partner</a></h2>
+      <p class="job-meta-line">FMI Building Innovation <span class="meta-sep">/</span> Mount Wellington, Auckland <span class="meta-sep">/</span> <span class="job-salary">$90,000 - $115,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.8<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Senior Financial Accountant and Business Partner role at a leading NZ building products manufacturer, combining technical accounting with commercial insight across New Zealand and Australian operations. The role suits a commercially minded accountant ready to influence business strategy and drive process improvement.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">FMI Building Innovation is one of New Zealand&#x27;s leading manufacturers and suppliers of window, door, glass, aluminium, and building products, with operations across New Zealand and Australia.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p><strong>Auckland | Full Time</strong></p><p><strong>Help Shape the Future of a Growing New Zealand Manufacturer</strong></p><p>FMI Building Innovation is one of New Zealand's leading manufacturers and suppliers of window, door, glass, aluminium and building products. With operations across New Zealand and Australia, we are continuing to invest in our people, systems and processes to support future growth.</p><p>We are looking for a commercially minded Senior Financial Accountant/Business Partner to join our Finance team based in Auckland.</p><p>This is more than a traditional accounting role. You'll work closely with our leadership team, support business performance through insightful reporting and analysis, and play a key role in improving systems, processes and financial controls across a multi-division manufacturing business.</p><p><strong>What You'll Be Doing</strong></p><p>Reporting to the Head of Finance, you will:</p><ul><li><p>Prepare monthly management accounts and reporting packs</p></li><li><p>Analyse business performance and investigate variances to budget</p></li><li><p>Support budgeting, forecasting and financial planning processes</p></li><li><p>Manage general ledger integrity and balance sheet reconciliations</p></li><li><p>Assist with inventory accounting and stock reconciliations</p></li><li><p>Support rebate and customer reporting programmes</p></li><li><p>Maintain and develop reporting within Microsoft Dynamics 365</p></li><li><p>Identify opportunities to improve systems, processes and reporting</p></li><li><p>Partner with operational managers to provide financial insights and support decision-making</p></li></ul><p><br/><strong>What We're Looking For</strong></p><p>You may be a developing Financial Accountant looking for your next step, or an experienced Management Accountant seeking a broader commercial role.</p><p>Ideally, you will have:</p><ul><li><p>A CA qualification or similar</p></li><li><p>Relevant tertiary qualification in Accounting or Finance</p></li><li><p>Previous experience in a Financial Accountant, Management Accountant or similar role</p></li><li><p>Strong analytical and problem-solving skills</p></li><li><p>Advanced Excel capability</p></li><li><p>Experience with ERP systems (Dynamics 365 experience advantageous)</p></li><li><p>Excellent attention to detail and accuracy</p></li><li><p>Strong communication skills and the ability to build relationships across the business</p></li><li><p>A proactive and continuous improvement mindset</p></li></ul><p>Manufacturing, inventory or distribution experience would be highly regarded but is not essential.</p><p><br/><strong>Why Join FMI?</strong></p><ul><li><p>Join a successful and growing New Zealand-owned business</p></li><li><p>Work closely with senior leaders across multiple divisions</p></li><li><p>Opportunity to influence business performance and strategic decision-making</p></li><li><p>Exposure to a complex manufacturing and distribution environment</p></li><li><p>Supportive team culture with opportunities for growth and development</p></li><li><p>Modern systems environment including Dynamics 365</p></li><li><p>Competitive salary package</p></li></ul><p>If you're looking for a role where you can make a genuine contribution and help drive continuous improvement, we'd love to hear from you.</p><p>Apply now with your CV and cover letter.</p><p><em>Applicants must be currently living in New Zealand and legally entitled to work here.</em><br/><br/></p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92908891" target="_blank" rel="noopener">https://nz.seek.com/job/92908891</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92908891" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.8" data-date="2026-06-23" data-salary="$60,000 - $75,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-li-career">LinkedIn + Career</span>
+        
+        <span class="date-tag">Posted: 2026-06-23</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.linkedin.com/jobs/view/assistant-accountant-at-fisher-paykel-appliances-4430866139" target="_blank" rel="noopener">Assistant Accountant</a></h2>
+      <p class="job-meta-line">Fisher &amp; Paykel Appliances <span class="meta-sep">/</span> Penrose <span class="meta-sep">/</span> <span class="job-salary">$60,000 - $75,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.8<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Assistant Accountant position at Fisher &amp; Paykel within their NZ Division finance team, arising from an internal promotion. The role sits within a small, dynamic and collaborative team at an iconic global NZ appliance brand. It offers exposure to a complex international business environment.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Fisher &amp; Paykel is an iconic New Zealand appliance brand with global operations, known for innovation, design excellence, and a strong heritage.</p>
+          <div class="job-description"><strong>The Role<br><br></strong>Fisher &amp; Paykel is an iconic New Zealand brand, a global company with a strong local heritage. Our origins inspire our culture of curiosity and passion to develop solutions designed around people - these are some of the core elements that make us unique. We are driven by our values of being trusted, sustainably minded, innovative, generous, and curious.<br><br>Due to an internal promotion, we now have an opportunity in our small dynamic and collaborative NZ Distributor team for an early-career <strong>Assistant Accountant</strong>. This is your chance to develop your technical and commercial accounting skills and continue towards achievement of CA with an exceptionally supportive leader and team.<br><br>You’ll own core accounting processes across rebates, pricing, debtors, and month-end reporting, maintain accuracy and integrity of financial transactions and reconciliations.<br><br><strong>Want more detail on what you’ll be doing?<br><br></strong><ul><li>Managing rebate commitments, analysing performance, processing payments and reconciliations, and partnering with Sales on pricing and claim approvals </li><li>Maintaining the Global Price Management (GPM) tool as the single source of truth and presenting key insights in monthly sales meetings </li><li>Performing monthly balance sheet reconciliations across key accounts and investigating variances </li><li>Performing daily and month-end bank reconciliations and maintaining the integrity of NZ debtors' balances with monthly reporting </li><li>Overseeing CAPEX reporting and maintaining the Fixed Asset Register in alignment with project timelines </li><li>Supporting the Financial Accountant and Inventory Controller with inventory reports, integrity checks, cycle counts, and consignment and inter-location stock movements </li><li>Supporting month-end close, journal entries, and preparation of monthly and annual (audited) accounts </li><li>Continuously improving financial controls, process documentation, and internal training, and ensuring compliance with Group financial policies and NZ regulatory requirements </li><li>Rotating across accounting tasks to build broad capability and cross-functional coverage within the team. <br><br><br></li></ul> <br><br><strong>Our ideal candidate…<br><br></strong>You’ll have up to a year of post-grad experience and be committed to ongoing learning and working towards CA. You’ll need excellent written and verbal communication skills, an ability to grasp and understand complex business issues and translate to non-financial stakeholders, a customer-facing aptitude and an ability to time manage competing demands and priorities. You’re self-motivated and display initiative and are solutions focused. Importantly you will work collaboratively across broad set of stakeholders to deliver successful outcomes for the business.<br><br><strong>What’s on offer?<br><br></strong>Excellent development, growth, and progression opportunities within our global NZ-based business. There are generous product discounts for yourself, friends &amp; family. Generous Kiwisaver or Company superannuation scheme. Based in our beautiful new HQ at Penrose, you’ll be close to public transport links and with a subsidised café onsite, and working 3-2 office/home, these opportunities really don’t come along often and we expect a large volume of applicants.<br><br><strong>Applications close Friday 3 July. Please do include a CV and cover letter and longlisted applicants will be invited to a video screen to assist with shortlisting. <br><br></strong>Fisher &amp; Paykel is an Equal Opportunity Employer. Employment decisions are made without regard to race, color, religion, national or ethnic origin, sex, sexual orientation, gender identity or expression, age, disability, or other characteristics protected by law.<br><br></div>
+          <p><strong>Source:</strong> Career Page</p>
+          <p><strong>Link:</strong> <a href="https://nz.linkedin.com/jobs/view/assistant-accountant-at-fisher-paykel-appliances-4430866139" target="_blank" rel="noopener">https://nz.linkedin.com/jobs/view/assistant-accountant-at-fisher-paykel-appliances-4430866139</a></p>
+          <p><strong>Career Page:</strong> <a href="https://haier.wd3.myworkdayjobs.com/job/Auckland-New-Zealand/Assistant-Accountant_REQ-25933-1" target="_blank" rel="noopener">https://haier.wd3.myworkdayjobs.com/job/Auckland-New-Zealand/Assistant-Accountant_REQ-25933-1</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.linkedin.com/jobs/view/assistant-accountant-at-fisher-paykel-appliances-4430866139" class="apply-btn" target="_blank" rel="noopener">Seek</a>
+        <a href="https://haier.wd3.myworkdayjobs.com/job/Auckland-New-Zealand/Assistant-Accountant_REQ-25933-1" class="apply-btn apply-btn-alt" target="_blank" rel="noopener">Career Page</a>
+      </div>
+    </div>
+    <div class="job-card" data-score="3.6" data-date="2026-06-22" data-salary="$130,000 – $150,000 per year" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        
+        <span class="date-tag">Posted: 2026-06-22</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92875698" target="_blank" rel="noopener">Finance Manager</a></h2>
+      <p class="job-meta-line">Private Advertiser <span class="meta-sep">/</span> Mount Wellington, Auckland <span class="meta-sep">/</span> <span class="job-salary">$130,000 – $150,000 per year</span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.6<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Finance Manager reporting to the CFO, responsible for overseeing daily finance operations including accuracy, compliance, and efficiency for a large privately owned import and distribution business. A step-up role for someone currently in a supervisory finance position. The business imports and distributes a wide range of products to both wholesale and retail markets.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">A large privately owned New Zealand import and distribution company serving wholesale and retail customers across a diverse product range.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p>We are seeking a Finance Manager, reporting to our CFO, to join our busy finance team.</p><p>In this role, you will oversee daily finance operations, to ensure accuracy, compliance, and efficiency. This is a fantastic opportunity for someone in a supervisory finance position looking for the next step in their career with a large privately owned and operated company. Our business involves the importation and distribution of a wide range of products to both wholesale and retail customers.  We have over 350 staff and revenue of over $330million.  </p><p>You will manage and mentor a team of 5. There is the requirement for you to be strategically astute, confident, with the ability and desire to build strong relationships with your key stakeholders.  You will be prepared to muck in with the team.  A key part of this role is compliance and checking so attention to detail is a must.  You will enjoy the day-to-day tasks but also look for opportunities to take on key projects, improve processes and tighten controls.  </p><p>Key tasks include:</p><ul><li><p>Supervising and supporting the finance team in daily tasks</p></li><li><p>Effectively managing daily cashflow and the entire payment processes for the group</p></li><li><p>Ensuring all tax payments are made to meet IRD/ATO deadlines</p></li><li><p>Ensuring all bank accounts are kept reconciled at all times</p></li><li><p>Overseeing operation of the trade finance facility</p></li><li><p>Overseeing high volume accounts payable for local and overseas creditors</p></li><li><p>Working with foreign currency and dealing with bankers</p></li><li><p>Supervising the preparation and filing of statutory GST, FBT, DWT, PAYE returns, income tax returns, and the payment of relevant taxes</p></li><li><p>Ensuing month end related accounts and finance related tasks are completed within set deadlines </p></li><li><p>Providing accurate, relevant and timely financial information to the Exec Team for effective decision making.</p></li><li><p>Ensure key financial internal controls are maintained and reviewed</p></li><li><p>Assisting with the interim and year-end financial audits – dealing with auditor requests in a timely manner</p></li><li><p>Assisting with preparing monthly, quarterly, and annual financial reporting</p></li><li><p>Providing training, guidance, and performance feedback to team members</p></li></ul><p>To be considered for this role you will need to have:</p><ul><li><p>A CA qualification</p></li><li><p>Strong financial accounting skills</p></li><li><p>Ability to review processes,</p></li><li><p>Drive change and implement efficiencies</p></li><li><p>Excellent communication skills – both written and verbal</p></li><li><p>Excellent attention to detail</p></li><li><p>Good time management skills</p></li><li><p>Previous experience in automating accounts payable would be an advantage</p></li></ul><p>You will have a strong background in working in finance teams or professional services such as audit, with at least 3 years post qualification experience.  You will understand the value and benefits from a high performing team, ensuring individuals have the opportunity to develop.  We offer a competitive salary, wellness bonus, discount on our food products, and life insurance along with parking onsite. As this is a great office environment, we are looking for a can do, will do attitude!  So, if this sounds like you and you have previous applicable experience, then apply now.</p><p><br/></p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92875698" target="_blank" rel="noopener">https://nz.seek.com/job/92875698</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92875698" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.6" data-date="2026-06-25" data-salary="$75,000 - $95,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="date-tag">Posted: 2026-06-25</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92956254" target="_blank" rel="noopener">Financial Accountant</a></h2>
+      <p class="job-meta-line">Wormald <span class="meta-sep">/</span> Onehunga, Auckland <span class="meta-sep">/</span> <span class="job-salary">$75,000 - $95,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.6<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Financial Accountant role at New Zealand&#x27;s leading fire protection provider, operating within a large, compliance-focused organisation with a nationwide presence. The role involves core financial accounting responsibilities and the opportunity to join an established, well-resourced finance team.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Wormald is New Zealand&#x27;s premier fire protection specialist with over 140 years of industry leadership, delivering end-to-end fire protection solutions nationwide.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p><strong>Join New Zealand’s Leading Fire Protection Specialist</strong></p><p><strong> </strong></p><p><strong>About Wormald</strong></p><p><strong>Wormald</strong> is New Zealand’s premier fire protection provider, delivering end-to-end solutions that safeguard people, property, and business continuity. With more than 140 years of industry leadership and a nationwide presence, we are trusted for our expertise, reliability, and unwavering commitment to the highest standards of safety and compliance.</p><p><strong> </strong></p><p><strong>The Opportunity</strong></p><p>As a <strong>Financial Accountant</strong>, you will be responsible for delivering accurate and timely financial reporting, maintaining strong accounting processes, and ensuring compliance with accounting standards and statutory requirements. This role plays a key part in supporting effective decision-making through high-quality financial insights and robust controls.</p><p><strong> </strong></p><p><strong>What You’ll Be Doing</strong></p><p><strong>Financial Accounting &amp; Reporting</strong></p><ul><li><p>Prepare monthly, quarterly, and annual financial reports, including profit and loss, balance sheet, and cash flow statements</p></li><li><p>Maintain the general ledger, including preparation and posting of journal entries</p></li><li><p>Complete balance sheet reconciliations in a timely manner</p></li><li><p>Support budgeting and forecasting processes</p></li><li><p>Monitor cash flow and contribute to overall financial performance</p></li></ul><p><strong>Compliance, Controls &amp; Audit</strong></p><ul><li><p>Ensure compliance with accounting standards, tax regulations, and company policies</p></li><li><p>Prepare and lodge GST and FBT returns</p></li><li><p>Support internal and external audit processes</p></li><li><p>Maintain and enhance internal controls, identifying risks and opportunities for improvement</p></li></ul><p><strong>Systems &amp; Processes</strong></p><ul><li><p>Utilise ERP systems (e.g. Pronto) to manage financial data and reporting</p></li><li><p>Identify and support process improvement initiatives in a growing and evolving environment</p></li></ul><p><strong>Business Partnering</strong></p><ul><li><p>Partner with operational leaders to provide financial insights and support decision-making</p></li><li><p>Translate financial data into clear commercial recommendations</p></li><li><p>Support cost control and profitability improvement initiatives</p></li></ul><p><strong>General</strong></p><ul><li><p>Work effectively in a standalone capacity while collaborating with remote teams</p></li><li><p>Assist with ad hoc tasks and projects as required</p></li></ul><p><strong> </strong></p><p><strong>What You Bring</strong></p><ul><li><p>Bachelor’s degree in Accounting, Finance, or a related field</p></li><li><p>CA/CPA qualification preferred (or working towards)</p></li><li><p>Proven experience in financial accounting and month-end close processes</p></li><li><p>Exposure to audits, tax compliance, and statutory reporting</p></li><li><p>Experience with large ERP systems (e.g. Pronto) is advantageous</p></li><li><p>Experience in process improvement or transformation initiatives</p></li><li><p>Background in a growing or transitioning business environment is beneficial</p></li><li><p>Strong analytical and problem-solving skills with high attention to detail</p></li><li><p>Ability to work independently in a lean environment</p></li><li><p>Strong communication and stakeholder management skills, with the ability to influence decision-making</p></li><li><p>Advanced proficiency in Excel and accounting systems</p></li><li><p>High level of integrity and discretion when handling confidential financial information</p></li><li><p>Resilient and adaptable, thriving in a fast-paced and changing environment</p></li></ul><p><strong> </strong></p><p><strong>Pre-Employment Requirements</strong></p><p>The successful candidate will be required to complete:</p><ul><li><p>Reference checks</p></li><li><p>Medical assessment</p></li><li><p>Criminal history check</p></li><li><p>Drug and alcohol screening</p></li></ul><p><strong> </strong></p><p><strong>Ready to Make an Impact?</strong></p><p>If you’re ready to grow your career with a company that values your contribution and invests in your development, we’d love to hear from you.</p><p> </p><p>For a confidential discussion, contact Janis at <a aria-label="Email partially hidden" data-contact-match="janis.sotelo@wormald.co.nz" href="mailto:janis.sotelo@wormald.co.nz">jan•••••••••@wormald.co.nz</a>.</p><p> </p><p><strong>Apply now and help protect what matters most.</strong></p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92956254" target="_blank" rel="noopener">https://nz.seek.com/job/92956254</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92956254" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.6" data-date="2026-06-26" data-salary="$60,000 - $75,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="date-tag">Posted: 2026-06-26</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92962918" target="_blank" rel="noopener">Assistant Accountant – Winger Motors</a></h2>
+      <p class="job-meta-line">Winger Motors <span class="meta-sep">/</span> Penrose, Auckland <span class="meta-sep">/</span> <span class="job-salary">$60,000 - $75,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.6<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Assistant Accountant position within the finance team of a large, long-established multi-brand automotive dealer group with dealerships across Auckland and Hamilton. The role supports the finance function of a diversified business representing over 15 automotive brands.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Winger Motors is a leading New Zealand automotive dealer group operating since 1931, representing brands including Subaru, Hyundai, Jeep, and many others across Auckland and Hamilton.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><h2><strong>Assistant Accountant – Winger Motors</strong></h2><p><strong>Join the Finance Team at Winger Motors</strong></p><p>Since 1931, Winger Motors has been helping New Zealanders get on the road. Today, we represent a diverse portfolio of automotive brands including Subaru, Suzuki, Hyundai, Isuzu Utes, MG, Chery, Jeep, RAM, Fiat, Renault, LDV, KGM, JAC, Omoda, Jaecoo and Forthing, alongside our Tyreland network. With dealerships across Auckland and Hamilton, we're proud of our heritage and excited about what's next.</p><p><br/></p><p><strong>About the Role</strong></p><p>We're looking for an <strong>Assistant Accountant</strong> to join our Auckland-based Finance team.</p><p>Reporting to the Financial Controller, you'll support the day-to-day financial operations of the business while gaining exposure across a broad range of accounting functions. From month-end reporting and reconciliations through to payroll support, statutory compliance and accounts receivable, this is an excellent opportunity to develop your accounting career within a large and successful New Zealand business.</p><p>This is a hands-on role suited to someone who enjoys variety, thrives on accuracy, and wants to be part of a collaborative team that keeps our business running smoothly.</p><p><br/></p><p><strong>Why Join Winger Motors?</strong></p><p>Finance is at the heart of every successful business, and at Winger you'll gain experience across a wide range of accounting functions while working alongside an experienced and supportive team.</p><p>You'll enjoy:</p><ul><li><p>A varied role with genuine opportunities to grow your accounting career.</p></li><li><p>Exposure to multiple business units and well-known automotive brands.</p></li></ul><ul><li><p>Ongoing learning and development opportunities.</p></li><li><p>Being part of a respected New Zealand business with over 90 years of history.</p></li></ul><p><br/></p><p><strong>Key Responsibilities</strong></p><ul><li><p>Process daily bank transactions and complete bank reconciliations.</p></li><li><p>Manage accounts receivable, including processing, allocations and debtor follow-up.</p></li><li><p>Process General Ledger transactions, including month-end journals.</p></li><li><p>Assist with monthly Profit &amp; Loss and Balance Sheet reconciliations.</p></li><li><p>Support month-end, quarterly and annual financial reporting.</p></li><li><p>Maintain the Fixed Asset Register.</p></li><li><p>Assist with payroll processing and associated administration.</p></li><li><p>Assist with statutory returns including GST, PAYE and FBT.</p></li><li><p>Support debtor and creditor ledger activities.</p></li><li><p>Ensure financial data is accurate, complete and processed on time.</p></li><li><p>Liaise with departments across the business to resolve finance and administration queries.</p></li><li><p>Support the Financial Controller and wider Finance team with additional projects and duties as required.</p></li></ul><p><br/></p><p><strong>About You</strong></p><ul><li><p>Previous experience in an Assistant Accountant, Accounts Officer or similar finance role.</p></li><li><p>A tertiary qualification in Accounting, Finance or a related discipline (or currently working towards one).</p></li><li><p>Strong attention to detail with excellent organisational skills.</p></li><li><p>Confident using Microsoft Excel and accounting software.</p></li><li><p>Able to prioritise work and meet deadlines in a fast-paced environment.</p></li><li><p>Excellent communication skills and a collaborative approach.</p></li><li><p>A proactive attitude with a willingness to learn and continuously improve.</p></li></ul><p><br/></p><p><strong>To be successful in this role, you'll also need:</strong></p><ul><li><p>The legal right to work in New Zealand.</p></li><li><p>A positive attitude and a commitment to accuracy, teamwork and continuous improvement.</p></li></ul><p>If you're looking to build your accounting career with one of New Zealand's leading automotive groups, we'd love to hear from you.</p><p>Apply now with your CV and a cover letter telling us why you'd be a great addition to the Winger Motors finance team.</p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92962918" target="_blank" rel="noopener">https://nz.seek.com/job/92962918</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92962918" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.6" data-date="2026-06-15" data-salary="$65,000 - $85,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        
+        <span class="date-tag">Posted: 2026-06-15</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92722513" target="_blank" rel="noopener">Auditor – Audit &amp; Assurance</a></h2>
+      <p class="job-meta-line">Newmarket, Auckland <span class="meta-sep">/</span> <span class="job-salary">$65,000 - $85,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.6<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Auditor role at a growing Auckland Chartered Accountancy practice, delivering audit and assurance engagements across a diverse client portfolio including SMEs, incorporated societies, and other entities. Offers breadth of client exposure within a smaller, generalist CA firm environment.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">JW &amp; Co. Advisory Limited is a growing Auckland-based Chartered Accountancy practice providing accounting, taxation, business advisory, and assurance services to clients throughout New Zealand.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p><strong>About Us:</strong></p><p>JW &amp; Co. Advisory Limited is a growing Chartered Accountancy practice based in Auckland, providing accounting, taxation, business advisory, and assurance services to a diverse range of clients throughout New Zealand.</p><p>We are seeking an experienced Auditor to join our team and assist in delivering high-quality audit and assurance engagements across a portfolio of small and medium-sized enterprises, incorporated societies, trust accounts, schools, and entities requiring special purpose reporting engagements.</p><p>This role offers an excellent opportunity to work closely with clients while developing your expertise in audit and assurance services within a supportive and professional environment.</p><p><br/></p><p><strong>Responsibilities:</strong></p><p><strong>Financial Analysis &amp; Risk Assessment</strong></p><p>•	Assist in planning and conducting audit and assurance engagements in accordance with applicable auditing and assurance standards.</p><p>•	Obtain an understanding of clients’ businesses, internal controls, and operating environments.</p><p>•	Identify key audit risks and areas requiring additional audit focus.</p><p>•	Assess financial and operational processes to support effective audit planning.</p><p><strong>Audit Execution &amp; Compliance Verification</strong></p><p>•	Perform audit testing and analytical procedures on financial records, transactions, and supporting documentation.</p><p>•	Verify the accuracy, completeness, and reliability of financial information.</p><p>•	Evaluate compliance with relevant accounting standards, legislative requirements, funding agreements, and reporting obligations.</p><p>•	Document audit work performed and maintain comprehensive audit files.</p><p><strong>Reporting &amp; Stakeholder Communication</strong></p><p>•	Prepare audit working papers, audit reports, management letters, and other assurance documentation.</p><p>•	Communicate audit findings and recommendations clearly and professionally to clients and engagement leaders.</p><p>•	Assist in resolving audit queries and obtaining supporting information from clients.</p><p>•	Contribute to the preparation of reports for stakeholders and governing bodies where required.</p><p><strong>Professional Standards and Quality Management</strong></p><p>•	Maintain compliance with applicable auditing, assurance, ethical, independence, and quality management standards.</p><p>•	Maintain independence and objectivity in accordance with applicable professional and ethical requirements.</p><p>•	Follow the firm’s quality management policies and audit methodologies.</p><p>•	Ensure all engagements are completed within agreed budgets and deadlines.</p><p>•	Support continuous improvement initiatives within the audit and assurance practice.</p><p><br/></p><p><strong>Qualifications:</strong></p><p><strong>1. </strong>A bachelor degree in Accounting, Finance, or a related business field is preferred.</p><p><strong>2. </strong>Alternatively, a minimum five years of progressive professional experience in external auditing, public accounting, or financial compliance roles will be considered in lieu of the formal qualification.</p><p><strong>3. </strong>CA ANZ, CPA Australia, ACCA, or equivalent professional qualification, or currently working towards such qualification, will be viewed favourably.</p><p><strong>4.</strong> Sound understanding of accounting principles, financial reporting frameworks, and auditing concepts.</p><p><strong>5. </strong>Strong analytical and problem-solving skills with excellent attention to detail.</p><p><strong>6. </strong>Excellent written and verbal communication skills.</p><p><strong>7. </strong>Ability to manage multiple engagements, prioritise workloads, and meet deadlines.</p><p><strong>8. </strong>Proficiency in Microsoft Office applications and accounting software.</p><p><strong>9. </strong>A current New Zealand driver’s licence would be advantageous.</p><p><br/></p><p><strong>Remuneration and work location:</strong></p><p>1. Newmarket, Auckland based position.</p><p>2. Full-time position of 40 hours per week.</p><p>3. A competitive remuneration package will be offered commensurate with skills, qualifications, and experience.</p><p><br/></p><p><br/></p><p><strong>Why Join Us?</strong></p><p>1. Exposure to a diverse range of audit and assurance engagements.</p><p>2. Opportunity to work with SMEs, not-for-profit organisations, schools, trusts, and incorporated societies.</p><p>3. Opportunity to assist in building and growing a dedicated audit and assurance practice.</p><p>4. Supportive and collaborative team environment.</p><p>5.Ongoing professional development and career progression opportunities.</p><p>6.Opportunity to contribute to the growth and success of a developing Chartered Accountancy practice.</p><h2><strong>How to Apply</strong></h2><p>Please submit your CV outlining your relevant experience via SEEK.</p><p>Applications will be reviewed as they are received, and interviews may commence before the closing date.</p><p>Applicants must have the legal right to work in New Zealand or be eligible to obtain an appropriate work visa.</p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92722513" target="_blank" rel="noopener">https://nz.seek.com/job/92722513</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92722513" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.4" data-date="2026-06-26" data-salary="$120,000 - $150,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="date-tag">Posted: 2026-06-26</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92963441" target="_blank" rel="noopener">Group Finance Manager | Property, Accommodation &amp; Services Sector</a></h2>
+      <p class="job-meta-line">Apparel HR <span class="meta-sep">/</span> Newmarket, Auckland <span class="meta-sep">/</span> <span class="job-salary">$120,000 - $150,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.4<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Group Finance Manager role leading the finance function across a diverse multi-entity portfolio in property, accommodation, facilities, and services, with significant exposure to senior leadership and finance transformation. Recruited by Apparel HR on behalf of a growing New Zealand client business.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">The employer is a growing multi-entity New Zealand business operating across property, accommodation, facilities, and service-related sectors, represented through Apparel HR recruitment.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p> <strong>The Company</strong></p><p>Our client is a growing multi-entity business operating across property, accommodation, facilities and service-related sectors throughout New Zealand.</p><p>An exciting opportunity has become available for an experienced Group Finance Manager to lead the finance function across a diverse portfolio of businesses. This role offers significant exposure to senior leadership, business performance, finance transformation and commercial decision-making.</p><p>The successful candidate will play a key role in ensuring strong financial governance, accurate reporting, effective cashflow management and scalable finance processes while supporting continued business growth.</p><p><strong>The Opportunity</strong></p><p>Reporting directly to the General Manager, this position will be responsible for the leadership and oversight of finance operations across multiple business units.</p><p>Key responsibilities include:</p><ul><li><p>Leading the group finance function across multiple entities</p></li><li><p>Preparing monthly management accounts, financial reporting and reporting packs</p></li><li><p>Managing budgeting, forecasting and cashflow planning</p></li><li><p>Overseeing accounts payable, accounts receivable and reconciliation functions</p></li><li><p>Managing owner payments, supplier payments and financial controls</p></li><li><p>Providing commercial analysis and business performance reporting</p></li><li><p>Supporting revenue management through reporting, pricing analysis and exception reporting</p></li><li><p>Improving finance systems, controls and operational processes</p></li><li><p>Driving automation, workflow improvements and finance transformation initiatives</p></li><li><p>Managing external accountants, offshore finance resources and finance support providers</p></li><li><p>Supporting year-end reporting, compliance and audit requirements</p></li></ul><p><strong>Systems &amp; Technology</strong></p><p>The organisation utilises a range of modern business platforms and is seeking someone who enjoys leveraging technology to improve efficiency and reporting outcomes.</p><p>Experience with some or all of the following would be advantageous:</p><ul><li><p>Xero</p></li><li><p>Hostaway</p></li><li><p>OTA+</p></li><li><p>HubSpot</p></li><li><p>Monday.com</p></li><li><p>Google Workspace</p></li><li><p>Payroll systems</p></li><li><p>Power BI, Looker Studio or similar reporting platforms</p></li><li><p>Automation and AI-assisted business tools</p></li></ul><p><strong>About You</strong></p><p>To be considered for this opportunity, you will ideally possess:</p><ul><li><p>Proven experience in a senior finance leadership role</p></li><li><p>Strong management accounting and financial reporting capability</p></li><li><p>Experience managing finance across multiple entities or business units</p></li><li><p>Strong forecasting, budgeting and cashflow management skills</p></li><li><p>Experience leading finance teams and external finance providers</p></li><li><p>Strong understanding of financial controls, compliance and reconciliations</p></li><li><p>Advanced Excel and financial modelling capability</p></li><li><p>Excellent stakeholder management and communication skills</p></li><li><p>A commercially focused and solutions-oriented mindset</p></li><li><p>Experience delivering process improvement and finance transformation initiatives</p></li></ul><p>Experience within property management, accommodation, hospitality, facilities management, contracting, services or SME environments will be highly regarded.</p><p>Applicants must hold CA ANZ, CPA, CIMA, ACCA or an equivalent professional accounting qualification.</p><p><strong>Applicants must have unrestricted and ongoing work rights in New Zealand. Candidates holding Working Holiday Visas, visas with limited remaining validity, or visas requiring current or future employer sponsorship  cannot be considered for this position.</strong></p><p>What's on Offer</p><ul><li><p>Senior leadership role with broad business exposure</p></li><li><p>Opportunity to influence strategy and business performance</p></li><li><p>Growing and dynamic organisation</p></li><li><p>Significant scope for process improvement and innovation</p></li><li><p>Modern systems environment</p></li><li><p>Competitive remuneration package</p></li><li><p>Auckland-based position</p></li></ul><p>If you are an experienced finance leader seeking a challenging and rewarding opportunity within a growing business group, we would welcome your application.</p><p>Apply now with your CV and a cover letter outlining your suitability for the role.</p><p>All applications will be treated in the strictest confidence.</p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92963441" target="_blank" rel="noopener">https://nz.seek.com/job/92963441</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92963441" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.3" data-date="2026-06-25" data-salary="$65,000 - $80,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="date-tag">Posted: 2026-06-25</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92939163" target="_blank" rel="noopener">Credit Controller</a></h2>
+      <p class="job-meta-line">Tip Top <span class="meta-sep">/</span> Mount Wellington, Auckland <span class="meta-sep">/</span> <span class="job-salary">$65,000 - $80,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.3<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Credit Controller role at an iconic New Zealand FMCG ice cream brand, managing accounts within a performance-driven team that values customer focus, teamwork, and quality. The role forms part of the finance function of a well-known consumer goods business.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Tip Top Ice Cream is a major New Zealand FMCG player with iconic Kiwi brands, committed to excellence and high ethical standards across its operations.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p>Tip Top Ice Cream is a major player in the New Zealand ice cream industry with iconic brands that Kiwis love and trust. At Tip Top, we strive to be the best at everything we do. We are passionate about excellence and uphold high ethical standards. Our people own their work and our team, along with our brands, are our competitive advantage in FMCG. We recognise outstanding performance and reward your efforts. Teamwork, customer focus and quality are all key values we strive for everyday alongside having fun!</p><p><strong>The opportunity</strong></p><p>An exciting opportunity for a proactive <strong>Credit Controller</strong> to be part of the Finance team to ensure timely collection of outstanding invoices and accurate allocation of all bank transactions. This role supports financial accuracy, building strong customer relationships and helping to manage the company’s overall credit risk exposure.</p><p><strong>Key Responsibilities:</strong></p><ul><li><p>Monitor customer accounts to ensure payments are received within agreed credit terms.</p></li><li><p>Proactively follow up on overdue invoices via phone, email, and written communication.  </p></li><li><p>Reconcile customer accounts and resolve any discrepancies or issues.</p></li><li><p>Allocation of incoming payments accurately to customer accounts including processing direct debit payments.</p></li><li><p>Maintenance and monitoring of customer accounts ensuring that credit limits accurately reflect customer sales and correct payment terms applied.</p></li><li><p>Processing weekly/monthly direct debit payments.</p></li><li><p>Send out customer statements on a weekly and monthly basis.</p></li><li><p>Monitor customer credit limits and ensure accounts are placed on hold when limits are exceeded and communication to relevant stakeholders.</p></li><li><p>Escalate high-risk accounts and recommend appropriate actions. </p></li><li><p>Daily coding of bank transactions and preparation of weekly/monthly bank reconciliations.</p></li><li><p>Support month-end close processes related to receivables and cash. </p></li><li><p>Liaising with internal and external stakeholders to resolve issues.</p></li></ul><p><strong>What you’ll bring and develop</strong></p><p>You’ll bring strong attention to detail, a commitment to accuracy, and discipline to follow through and maximise cash collection.  In this role, you’ll have the opportunity to build strong internal and external relationships and strengthen your understanding of financial controls, reporting and reconciliations and identifying areas of improvement in these areas.</p><p>To be successful in this role you will have:</p><ul><li><p>Strong understanding of accounts receivable processes, reconciliations, financial controls, and best‑practice documentation.</p></li><li><p>Excellent analytical, problem‑solving, and communication skills, with a customer‑focused mindset.</p></li><li><p>Proficiency in financial systems and platforms with good Excel skills.</p></li><li><p>Strong organisational skills with the ability to handle competing demands and meet deadlines.</p></li></ul><p><strong>Our story</strong></p><p>Tip Top has been part of New Zealanders' lives for 90 years and we are proud to still be making the delicious ice cream products that every New Zealander loves. Tip Top is well known for its delicious product range and for its innovation and creativity. Forward-thinking and successful, Tip Top can offer you access to great resources and the potential to grow your career. </p><p>As part of the Froneri Family, we are the second largest ice cream manufacturer in the world, selling a staple of well-known ice cream brands in twenty-five countries. Froneri brings leadership and global expertise in ice cream, reaching into new ice cream markets, and new consumer products.</p><p>If you are looking to work for a company that is always working to find new ways to improve its business and excite the market, then Tip Top Ice Cream is for you. </p><p>Applicants for this position should have NZ residency or a valid NZ work visa. We are proud to be an equal opportunity employer. We want great people who want to do great things, no matter their background, and we have an inclusive and diverse approach to recruitment.</p><p><br/></p><p><strong>Applications close on 3th July 2026.</strong></p><p>Apply today and enter an environment that is committed to growth! What’s the best that could happen? </p><p>Unfortunately, we do not always have the time to respond to all applicants. Only candidates who match the required level of skills and experience will be contacted.</p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92939163" target="_blank" rel="noopener">https://nz.seek.com/job/92939163</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92939163" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.2" data-date="2026-06-22" data-salary="$60,000 - $72,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        
+        <span class="date-tag">Posted: 2026-06-22</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92873032" target="_blank" rel="noopener">Accounts Receivable Officer | Newmarket</a></h2>
+      <p class="job-meta-line">Metlifecare <span class="meta-sep">/</span> Newmarket, Auckland <span class="meta-sep">/</span> <span class="job-salary">$60,000 - $72,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.2<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Accounts Receivable Officer joining the Shared Services finance team at one of New Zealand&#x27;s largest retirement village operators, handling a high-volume AR workload. The role offers hybrid and flexible working arrangements along with extensive staff benefits.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Metlifecare is one of New Zealand&#x27;s largest retirement village and aged care operators, with a nationwide portfolio of communities supporting older New Zealanders.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><ul>
+<li>Join a high performing team – advance your career</li>
+<li>Hybrid and flexible work environment</li>
+<li>Extensive staff benefits – read on to find out more!</li>
+</ul>
+<p><strong>About the role</strong></p>
+<p>Reporting to the Shared Services Manager, you will be joining an experienced, outgoing, and hardworking Finance Team. We are keen to have you join to help with our high-volume AR workload and provide efficient service to our customers, including, residents, their families and supporting our village and support office teams. This is a great role where you will move into a large finance team and have the opportunity to develop your skills.</p>
+<p><strong>Key responsibilities will include:</strong></p>
+<ul>
+<li>Process debtor invoices and customer on-charges promptly and accurately.</li>
+<li>Maintain up-to-date admission records for resident billing.</li>
+<li>Manage interactions with funding agencies and assist residents and families with billing questions.</li>
+<li>Handle outstanding accounts and complete monthly processes to Metlifecare standards.</li>
+<li>Identify and implement process improvements.</li>
+<li>Contribute to innovative and efficient customer satisfaction methods.</li>
+<li>Work actively to ensure that Metlifecare's high standards of customer service are maintained at all times.</li>
+</ul>
+<p><strong>About you</strong></p>
+<p>You will have experience in a high-volume accounts receivable role where you were responsible for billing, receipting and revenue recognition. You are a team player with excellent communication skills, strong excel skills and ideally come from or have some knowledge of the retirement industry (not essential). You enjoy the buzz of being busy and strive for continuous improvement, giving your ideas for better efficiency. We will always listen to your ideas!!</p>
+<p><strong>About us</strong></p>
+<p>Established in 1984, Metlifecare is a leading owner and operator of retirement villages, providing rewarding lifestyles and care to more than 7,300 New Zealanders. We pride ourselves on providing retirement communities in which people are empowered to be the very best version of themselves.</p>
+<p><strong>Staff Benefits Include:</strong></p>
+<ul>
+<li>3 paid wellness days per annum</li>
+<li>1 paid day of leave to celebrate your birthday each year</li>
+<li>Health Insurance - automatic cover free to all permanent staff</li>
+<li>26 weeks of parental leave on full pay and 5 days paid leave for partners</li>
+<li>KiwiSaver payments continued for those opted in over the age of 65 years</li>
+<li>Employee assistance program (EAP)</li>
+<li>Refer a friend incentive of up to $1500*</li>
+<li>Access to thousands of online training modules and courses from some of the world's leading learning specialists</li>
+<li>Education, Development and Training Support</li>
+</ul>
+<p><strong>How to apply</strong></p>
+<p>Please apply by clicking on the below APPLY NOW button or by visiting our careers page www.careers.metlifecare.co.nz/home </p>
+<p> </p>
+<p>  </p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92873032" target="_blank" rel="noopener">https://nz.seek.com/job/92873032</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92873032" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.1" data-date="2026-06-24" data-salary="$55,000 - $68,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="date-tag">Posted: 2026-06-24</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92930220" target="_blank" rel="noopener">Accounts Payable Administrator</a></h2>
+      <p class="job-meta-line">Kia Puāwai <span class="meta-sep">/</span> Mount Wellington, Auckland <span class="meta-sep">/</span> <span class="job-salary">$55,000 - $68,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.1<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Accounts Payable Administrator role supporting the finance team at a Māori and Pacific community health and social services organisation. The role involves standard AP processing within a values-driven, culturally grounded environment. Cultural alignment with Pacific communities is implied as part of the organisational fit.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Kia Puāwai is a Māori and Pacific health and social services provider delivering community-focused support across New Zealand.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p><b><i>E ngā reo, e ngā mana, huri noa I te motu, tēnā koutou katoa.</i></b></p>
+<p><b><i>He tūranga tēnei e wātea ana ki roto o Kia Puāwai</i></b></p>
+<p><b>Tēnā koutou katoa, Mālō nī, Fakaalofa lahi atu, Kia orāna, Tālofa lava, Mālō e lelei, Tālofa, Ni sa bula vinaka, Noa'ia, and warm Pacific Greetings.</b></p>
+<br/><p><b>About the role | <strong>Mō tēnei tūranga mahi</strong></b></p>
+<p>We are looking for an Accounts Payable administrator to join our Finance team in Auckland. We are looking for someone to start as soon as possible! </p>
+<p>This role fills an integral part of the Finance Team. You will ensure tasks are completed in a timely manner and within allocated time frames. The role will look after the accounts payable process from end to end. This includes:</p>
+<ul>
+<li>maintaining the accounts payable inbox</li>
+<li>reconciling supplier statements</li>
+<li>processing and paying caregiver payments, staff reimbursements and invoices</li>
+<li>cost allocation with regards to large suppliers</li>
+<li>answering queries</li>
+<li>filing and maintaining AP records for audit</li>
+<li>supporting the team where needed</li>
+</ul>
+<p>Ideally, you will be a highly organised individual with integrity, an ability for problem solving, friendly and have a positive attitude.</p>
+<p> </p>
+<p><b>About You | <strong>Mōu</strong></b></p>
+<ul>
+<li>Friendly, approachable, and professional.</li>
+<li>Excellent customer service skills</li>
+<li>Experienced administrator with strong attention to detail. </li>
+<li>Have the willingness and ability to uphold the mana of our organisation by embracing tikanga Māori as part of best practice.</li>
+<li>Organised, responsible and able to work to deadlines.</li>
+<li>Motivated to make a real difference to support of our staff, caregivers, and clients.</li>
+<li>Able to complete satisfactory Police and MSD checks and have a full NZ license.</li>
+<li>Accounts payable experience and/or accounting degree desirable</li>
+</ul>
+<p> </p>
+<p><strong>What we offer | Ngā āhuatanga kei a mātou</strong></p>
+<ul>
+<li>Flexible working environment</li>
+<li>A comprehensive orientation and induction programme, including noho marae.</li>
+<li>Be a part of our 4 Day workweek (4DWW). The 4DWW will see our kaimahi retain 100 percent of their pay, while working 80 percent (or close to) of the time and still delivering 100 percent on the great mahi we do.</li>
+<li>Paid birthday leave</li>
+<li>Employee Assistance Programme</li>
+</ul>
+<p> </p>
+<p><strong>About Kia Puāwai</strong></p>
+<p>We are a non-profit tangata Tiriti organisation which specialises in providing therapeutic services for tamariki, rangatahi and whānau who have complex behaviour and/or mental health needs.</p>
+<p>Our innovative approach combines Te ao Tauiwi (Western) evidence-based models with mātauranga Māori and Pasifika knowledge. We work in a trauma informed way that acknowledges the impacts of colonisation for tangata whenua and indigenous peoples of Te Moana Nui a Kiwa, including how and why members of these communities may require our services.</p>
+<p>Our organisational whakakitenga (vision) of Aroha, Manaakitanga, Whanaungatanga and Wairuatanga help us to define what best practice is for working with tangata whenua in Aotearoa.</p>
+<p>As a tangata Tiriti organisation, we are committed to upholding our obligations to He Whakaputanga and Te Tiriti o Waitangi. We strive to deliver equitable outcomes through the designing and delivery of effective and appropriate services for tangata whenua and Pasifika.</p>
+<p>Our national office is in Tāmaki Makaurau, and we have over 180 staff and caregivers supporting rangatahi and their whānau across Te Taitokerau, greater Tāmaki, Waikato, Bay of Plenty, Hawkes Bay, and the lower areas of Te Ika o Māui and Te Wai Pounamu. To find out more about Kia Puāwai, visit www.kiapuawai.nz</p>
+<p><strong>Closing date | Rā Katinga  </strong>9th July 2026. </p>
+<p><i>Please note that we review applications as we receive them and we may remove the advert before the closing date if we find a suitable candidate. </i></p>
+<p><strong>Position Description:<i> </i></strong>please request a position description from <a href="mailto:recruitment@kiapuawai.nz">recruitment@kiapuawai.nz</a></p>
+<p>Please do not email us your CV and Cover Letter, only applications made via Seek will be considered.</p>
+<p><i>We welcome and encourage diversity and inclusion in our workforce and adhere to best practice equal employment opportunity principles in all aspects of our recruitment and our ways of working.  Kia Pu</i><em>ā</em><i>wai is Rainbow Tick accredited.</i></p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92930220" target="_blank" rel="noopener">https://nz.seek.com/job/92930220</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92930220" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.0" data-date="2026-06-25" data-salary="$30 - $40/hr" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-part-time">Part-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="date-tag">Posted: 2026-06-25</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92937175" target="_blank" rel="noopener">Accounts Payable &amp; Job Costing Analyst - Roofing &amp; Construction</a></h2>
+      <p class="job-meta-line">Topline Roofing <span class="meta-sep">/</span> Epsom, Auckland <span class="meta-sep">/</span> <span class="job-salary">$30 - $40/hr <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.0<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Part-time Accounts Payable and Job Costing Analyst role at a commercial roofing company, blending transactional AP work with project cost analysis across commercial and industrial roofing jobs. Suited to someone who enjoys cost analysis in a trade or construction environment.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Topline Roofing is a well-established Auckland-based commercial roofing and waterproofing contractor with a strong reputation for quality across commercial and industrial projects.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p><strong>We are a well-established commercial roofing company based in Auckland, delivering roofing and waterproofing solutions across a wide range of commercial and industrial projects. With a strong reputation for quality workmanship, safety, and reliability, we are looking for an experienced Accounts Payable/Job Costing Analyst to join our growing team.</strong></p><p><strong>This is a busy and varied role for a person with a passion for cost analysis who enjoys working in a fast-paced construction environment. The role is part time 32 hours per week, and can include flexibility to suit those who require work around life style solutions.</strong></p><p><strong>Reporting to the Finance Manager, you will be the gatekeeper for the end-to-end accounts payable function, including keeping a watchful eye on project costing across multiple active projects.</strong></p><p><strong>Key Responsibilities</strong></p><ul><li><p><strong>Processing supplier invoices</strong></p></li><li><p><strong>Matching invoices to purchase orders and project/job codes</strong></p></li><li><p><strong>Preparing weekly payment runs</strong></p></li><li><p><strong>Reconciling supplier statements and resolving discrepancies</strong></p></li><li><p><strong>Managing subcontractor invoices and payment tracking</strong></p></li><li><p><strong>Liaising with project managers and suppliers regarding approvals and queries</strong></p></li><li><p><strong>Analysing jobs to track quote versus actual outcomes</strong></p></li><li><p><strong>Assisting with month-end reporting and accruals</strong></p></li><li><p><strong>Maintaining accurate financial records and documentation</strong></p></li></ul><p><strong>Skills &amp; Experience</strong></p><ul><li><p><strong>Previous Accounts Payable &amp; Job Costing Analyst experience (construction industry preferred)</strong></p></li><li><p><strong>Strong reconciliation and data entry skills</strong></p></li><li><p><strong>Experience with accounting software</strong></p></li><li><p><strong>MS Office skills with at least Intermediate proven Excel skills</strong></p></li><li><p><strong>Payroll experience an advantage</strong></p></li><li><p><strong>High attention to detail and accuracy</strong></p></li><li><p><strong>Excellent communication and organisational skills</strong></p></li><li><p><strong>Ability to manage competing deadlines and priorities</strong></p></li><li><p><strong>Able to work autonomously and with a team</strong></p></li><li><p><strong>Prior NZ work experience is required</strong></p></li></ul><p><strong>What We Offer</strong></p><ul><li><p><strong>Competitive salary package</strong></p></li><li><p><strong>Supportive, positive and down-to-earth team culture</strong></p></li><li><p><strong>Stable, growing business with long-term opportunities</strong></p></li><li><p><strong>Variety and exposure to the construction industry</strong></p></li><li><p><strong>Convenient Auckland location with on-site parking</strong></p></li></ul><p><strong>Apply Now</strong></p><p><strong>If you are an organised and proactive accounts professional looking for your next opportunity in the construction sector, we would love to hear from you.</strong></p><p><strong>Please apply with your CV and a brief cover letter outlining your experience.</strong></p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92937175" target="_blank" rel="noopener">https://nz.seek.com/job/92937175</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92937175" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.0" data-date="2026-06-24" data-salary="$60,000 – $66,000 per year + Annual Bonus" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        
+        <span class="date-tag">Posted: 2026-06-24</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92914742" target="_blank" rel="noopener">Accounts Receivable</a></h2>
+      <p class="job-meta-line">EPAY LIMITED <span class="meta-sep">/</span> Mount Wellington, Auckland <span class="meta-sep">/</span> <span class="job-salary">$60,000 – $66,000 per year + Annual Bonus</span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.0<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Office-based Accounts Receivable Officer role handling end-to-end AR functions including collections, payment processing, invoicing, and credit notes. Salary is $60,000–$66,000 plus an annual bonus, making it a straightforward transactional AR position.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">EPAY Limited is an Auckland-based payments and financial services company focused on accounts receivable and collections operations.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p><strong>About the role</strong></p><p>Office based the Accounts Receivable Officer position entails the day-to-day collection of receivable debts and refunds. You will handle the collection of finances and the resolution of account queries, raising sales invoices and issuing credit notes.</p><p><strong>Key responsibilities</strong></p><ul><li><p>Manage the full accounts receivable function, including end-to-end collections, payment processing , cash collection for debtors, and reporting to Corporate HQ (Kansas).</p></li><li><p>Oversee debtor management processes, including dispute resolution, tribunal applications, civil enforcement, and coordination with external collection agencies to minimise aged and doubtful debts.</p></li><li><p>Administer direct debit processes (set-up, failed payments, and reporting), and maintain templates for payroll, vendor payments, and refunds.</p></li><li><p>Handle invoicing and adjustments end-to-end, including manual invoice processing (rebates, sub-lease rent, electricity), credit notes, refunds/reimbursements, ensuring appropriate approvals and accurate calculations.</p></li><li><p>Maintain strong internal and external stakeholder relationships, resolve billing and account queries, provide reporting (including monthly AR templates), complete vendor documentation, and support general accounting tasks (journals, projects, reporting).</p></li></ul><p><strong>About you</strong></p><ul><li><p>Minimum 1 year in accounts receivable, or similar role</p></li></ul><ul><li><p>Prior experience within a global organisation and/or experience in Electronic Payments, Financial Services or a related industry</p></li><li><p>Accounting background, a Diploma and/or working towards the accounting degree</p></li></ul><ul><li><p>Proven track-record of achievements in vendor invoices and payments management</p></li><li><p>Fluent in English, both oral and written with excellent communication skills</p></li></ul><ul><li><p>Proficient reconciliation skills (ATB vs ledger and ATB vs creditors statement)</p></li></ul><ul><li><p>Ability to reconcile complex accounts and have excellent attention to detail</p></li><li><p>Strong computer skills and advanced excel skills</p></li></ul><p><strong>Benefits</strong></p><ul><li><p>🛍️ Staff discounts on products, giving you great deals on popular brands.</p></li></ul><ul><li><p>💙 Health and wellness perks to help you feel your best.</p></li><li><p>🎉 Supportive team culture with great social events</p></li><li><p>🤝 Inclusive and supportive work environment where everyone can thrive.</p></li><li><p>📚Training, development and leadership growth opportunities</p></li><li><p>📈 Opportunity to shape strategy and influence business direction</p></li></ul><p><br/></p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92914742" target="_blank" rel="noopener">https://nz.seek.com/job/92914742</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92914742" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    <div class="job-card" data-score="3.0" data-date="2026-06-26" data-salary="$65,000 - $85,000" style="border-left: 4px solid var(--score-mid)">
+      <div class="job-meta">
+        <span class="badge badge-full-time">Full-time / Permanent</span>
+        <span class="badge badge-source-seek">Seek</span>
+        <span class="badge badge-new">NEW</span>
+        <span class="date-tag">Posted: 2026-06-26</span>
+      </div>
+      <h2 class="job-title"><a href="https://nz.seek.com/job/92964299" target="_blank" rel="noopener">Credit Controller\u002FSenior Credit Controller</a></h2>
+      <p class="job-meta-line">Green Gorilla <span class="meta-sep">/</span> Onehunga, Auckland <span class="meta-sep">/</span> <span class="job-salary">$65,000 - $85,000 <span class="salary-est">(est.)</span></span></p>
+      <div class="score-bar">
+        <div class="score-total score-mid">3.0<span class="score-max">/5</span></div>
+        <div class="score-dims">
+          <div class="score-dim"><span class="dim-label">Proximity</span><span class="mini-bar"><span class="mini-bar-fill" style="width:40%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Relevance</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Experience</span><span class="mini-bar"><span class="mini-bar-fill" style="width:80%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Company</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Salary</span><span class="mini-bar"><span class="mini-bar-fill" style="width:60%"></span></span></div>
+          <div class="score-dim"><span class="dim-label">Stability</span><span class="mini-bar"><span class="mini-bar-fill" style="width:100%"></span></span></div>
+        </div>
+      </div>
+      <p class="job-summary">Credit Controller or Senior Credit Controller role at a Kiwi-owned waste management and environmental services company, supporting financial performance and customer partnerships. Level of seniority will be matched to the candidate&#x27;s skills and experience.</p>
+      <details>
+        <summary>View details</summary>
+        <div class="detail-content">
+          <p class="company-intro">Green Gorilla is a proudly Kiwi-owned waste management and environmental services company committed to sustainability, operational excellence, and outstanding customer service.</p>
+          <div class="job-description"><div class="_1dnqdc70 _18do4am0"><p>At Green Gorilla, we’re not just in waste management — we’re driving environmental change and innovation. As a proudly Kiwi-owned business, we are committed to sustainability, operational excellence, and delivering outstanding service to our customers.</p><p>We’re now looking for a Credit Controller/Senior Credit Controller (depending on skills and experience) to play a key role in supporting our financial performance and customer partnerships.</p><p><strong>The Role</strong></p><p>This is a pivotal position responsible for managing a large, high-volume debtor portfolio, ensuring strong cash flow performance, and minimising credit risk.</p><p>You will work as part of a close-knit team of three, collaborating closely with our Operations, Customer Service, Sales, and Finance teams to ensure seamless business operations while contributing to our commitment to a cleaner, more sustainable future.</p><p><strong>Key responsibilities include (but are not limited to)</strong>:</p><p>·         Manage and take ownership of a high-volume customer ledger</p><p>·         Drive collections to achieve monthly targets and optimise cash flow</p><p>·         Build strong relationships with customers to support timely payments</p><p>·         Resolve billing queries and disputes efficiently</p><p>·         Perform complex account reconciliations</p><p>·         Assess credit risk and recommend limits</p><p>·         Negotiate payment plans and monitor adherence</p><p>·         Prepare aged debt reporting and performance insights</p><p>·         Maintain accurate records within WastEdge (operations system and AR ledger)</p><p>·         Support month-end Accounts Receivable processes</p><p>·         Identify rends and opportunities to improve credit processes</p><p><strong>About You</strong></p><p>You’re a proactive, results-driven credit professional who thrives in a fast-paced environment and enjoys working collaboratively across teams.</p><p><strong>What you’ll bring:</strong></p><p>·         3+ years' experience in Credit Control and/or Accounts Receivable (5+ years preferred for Senior Credit Controller appointments).</p><p>·         Proven experience managing large Trade and Commercial ledger.</p><p>·         Industry experience is preferred, with WastEdge system experience considered an advantage.</p><p>·         Strong debt recovery and dispute resolution skills</p><p>·         Experience working to KPIs and collection targets</p><p>·         Excellent communication and negotiation capability</p><p>·         High attention to detail and strong analytical skills</p><p><strong>Technical Skills</strong> </p><p>Advanced Microsoft Excel (Pivot Tables, XLOOKUP, Power Query preferred)</p><p>·         Strong experience with WastEdge</p><p>·         ERP system exposure (SAP, Oracle, Microsoft Dynamics)</p><p>·         Strong reporting and anlaytical capability</p><p> This is a fantastic opportunity to work for Green Gorilla – New Zealand’s highly successful independent recycling and waste company that sets the trends of waste services in our country. We are fuelled by ambition, innovation, and kiwi ingenuity to deliver the most sustainable way to manage and process waste, for a cleaner, greener New Zealand.</p><p>If you are looking for an opportunity to join a dynamic team that collectively works towards a common goal of leaving our environment better, apply now.</p><p>Please note: we do not always work to fixed closing dates and may start considering applications as they are received so we encourage you to apply early.</p><p>Applicants for this position must hold NZ citizenship/residency or the legal right to work in New Zealand.</p></div></div>
+          <p><strong>Source:</strong> Seek</p>
+          <p><strong>Link:</strong> <a href="https://nz.seek.com/job/92964299" target="_blank" rel="noopener">https://nz.seek.com/job/92964299</a></p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a href="https://nz.seek.com/job/92964299" class="apply-btn" target="_blank" rel="noopener">Apply</a>
+        
+      </div>
+    </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Ellerslie Job Scanner - Generated 2026-06-27 10:17
+  </footer>
+
+  <script>
+    function switchTab(name) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById('panel-' + name).classList.add('active');
+    }
+
+    function sortJobs(by) {
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        const cards = Array.from(panel.querySelectorAll('.job-card'));
+        cards.sort((a, b) => {
+          if (by === 'score') return parseFloat(b.dataset.score) - parseFloat(a.dataset.score);
+          if (by === 'date') return (b.dataset.date || '').localeCompare(a.dataset.date || '');
+          if (by === 'salary') {
+            const sa = parseInt((a.dataset.salary || '').replace(/[^0-9]/g, '')) || 0;
+            const sb = parseInt((b.dataset.salary || '').replace(/[^0-9]/g, '')) || 0;
+            return sb - sa;
+          }
+          return 0;
+        });
+        cards.forEach(c => panel.appendChild(c));
+      });
+    }
+  </script>
+</body>
+</html>
