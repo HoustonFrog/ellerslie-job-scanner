@@ -17,7 +17,7 @@ def generate_report(jobs: list, output_dir: str = "output") -> str:
     """Generate a premium responsive HTML report. Returns file path."""
     out_path = Path(__file__).parent / output_dir
     out_path.mkdir(parents=True, exist_ok=True)
-    filename = f"ellerslie-jobs-{date.today().isoformat()}.html"
+    filename = "ellerslie-jobs.html"
     filepath = out_path / filename
 
     source_counts = {}

@@ -488,8 +488,17 @@ def cmd_scan(dry_run: bool = False, no_enrich: bool = False):
 
     # 7. Generate report
     print(f"\n[7/7] Generating HTML report...")
+    # Delete old dated report files before generating new one
+    output_dir = BASE_DIR / "output"
+    for old_html in output_dir.glob("ellerslie-jobs-*.html"):
+        old_html.unlink()
+        print(f"  Deleted old report: {old_html.name}")
     report_path = report.generate_report(enriched)
+    # Copy to repo root as index.html for GitHub Pages
+    import shutil as _shutil
+    _shutil.copy2(report_path, BASE_DIR / "index.html")
     print(f"  Report: {report_path}")
+    print(f"  GitHub Pages: {BASE_DIR / 'index.html'}")
 
     # 8. WhatsApp notification
     if os.environ.get("WHATSAPP_API"):

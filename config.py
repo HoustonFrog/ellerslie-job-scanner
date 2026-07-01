@@ -47,6 +47,7 @@ AGENCY_BLOCKLIST = [
     "absolute it",
     "hayes",
     "talent international",
+    "apparel hr",
     "seek",
     "recruit",
     "staffing",
