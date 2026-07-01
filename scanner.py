@@ -26,15 +26,25 @@ HISTORY_FILE = BASE_DIR / "output" / "scan-history.json"
 
 def load_history() -> dict:
     if HISTORY_FILE.exists():
-        return json.loads(HISTORY_FILE.read_text())
-    return {"seen_urls": [], "scans": []}
+        h = json.loads(HISTORY_FILE.read_text())
+        h.setdefault("first_seen", {})
+        return h
+    return {"seen_urls": [], "first_seen": {}, "scans": []}
 
 
 def save_history(history: dict, new_jobs: list[dict]):
-    history["seen_urls"].extend(j["url"] for j in new_jobs)
+    today = date.today().isoformat()
+    first_seen = history.setdefault("first_seen", {})
+    for j in new_jobs:
+        for url_key in ("url", "career_url", "linkedin_url"):
+            u = j.get(url_key)
+            if u:
+                if u not in history["seen_urls"]:
+                    history["seen_urls"].append(u)
+                first_seen.setdefault(u, today)
     history["seen_urls"] = list(set(history["seen_urls"]))
     history["scans"].append({
-        "date": date.today().isoformat(),
+        "date": today,
         "jobs_found": len(new_jobs),
     })
     HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -394,9 +404,16 @@ def cmd_scan(dry_run: bool = False, no_enrich: bool = False):
     # 4. Mark new vs previously seen
     history = load_history()
     seen_history = set(history["seen_urls"])
+    first_seen = history.get("first_seen", {})
     new_count = 0
     for j in filtered:
-        j["is_new"] = j["url"] not in seen_history
+        # A job is new if its primary URL AND all secondary URLs are unseen
+        all_urls = [u for u in (j.get("url"), j.get("career_url"), j.get("linkedin_url")) if u]
+        j["is_new"] = not any(u in seen_history for u in all_urls)
+        if not j["is_new"]:
+            # Use the earliest date we first saw any of this job's URLs
+            known_dates = [first_seen[u] for u in all_urls if u in first_seen]
+            j["date_found"] = min(known_dates) if known_dates else date.today().isoformat()
         if j["is_new"]:
             new_count += 1
     print(f"  New (not in history): {new_count} / {len(filtered)} total")
