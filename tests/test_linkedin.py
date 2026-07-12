@@ -138,3 +138,19 @@ def test_merge_different_companies_not_merged():
     ]
     merged = _merge_duplicates(jobs)
     assert len(merged) == 2
+
+
+def test_merge_company_name_variants_across_sources():
+    # Seek, LinkedIn, and a company's own career page each report the company
+    # name differently (e.g. "Mercury" / "Mercury NZ" / "Mercury NZ (Mercury Energy)").
+    # These are the same real-world employer and should still be merged.
+    jobs = [
+        {"title": "Treasury Manager", "company": "Mercury", "url": "https://seek/1", "source": "seek", "location": "Newmarket"},
+        {"title": "Treasury Manager", "company": "Mercury NZ", "url": "https://linkedin/1", "source": "linkedin", "location": "Newmarket"},
+        {"title": "Treasury Manager", "company": "Mercury NZ (Mercury Energy)", "url": "https://career/1", "source": "career_page", "location": "Newmarket"},
+    ]
+    merged = _merge_duplicates(jobs)
+    assert len(merged) == 1
+    assert merged[0]["source"] == "seek+linkedin+career"
+    assert merged[0]["linkedin_url"] == "https://linkedin/1"
+    assert merged[0]["career_url"] == "https://career/1"

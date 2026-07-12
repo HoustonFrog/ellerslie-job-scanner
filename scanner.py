@@ -175,24 +175,41 @@ def _normalize_title(title: str) -> str:
     return re.sub(r"^\d+\s*[-–]\s*", "", title).strip().lower()
 
 
+def _company_names_match(a: str, b: str) -> bool:
+    """True if company names likely refer to the same employer.
+    Sources report different name variants for the same company, e.g.
+    Seek says "Mercury", LinkedIn says "Mercury NZ", and a career page
+    (named per companies.yml) says "Mercury NZ (Mercury Energy)"."""
+    a, b = a.lower(), b.lower()
+    return a in b or b in a
+
+
 def _merge_duplicates(jobs: list[dict]) -> list[dict]:
     """Merge Seek, LinkedIn, and career_page entries for the same role.
     Priority: seek > linkedin > career_page. Secondary URLs stored in career_url / linkedin_url."""
     SOURCE_PRIORITY = {"seek": 0, "linkedin": 1, "career_page": 2}
 
-    by_key: dict[str, list[dict]] = {}
+    groups: list[dict] = []  # each: {"title_key": str, "company": str, "jobs": [...]}
     for j in jobs:
-        key = (j["company"].lower(), _normalize_title(j["title"]))
-        by_key.setdefault(key, []).append(j)
+        title_key = _normalize_title(j["title"])
+        group = next(
+            (g for g in groups if g["title_key"] == title_key and _company_names_match(g["company"], j["company"])),
+            None,
+        )
+        if group is None:
+            groups.append({"title_key": title_key, "company": j["company"], "jobs": [j]})
+        else:
+            group["jobs"].append(j)
 
     merged = []
-    for group in by_key.values():
-        if len(group) == 1:
-            merged.append(group[0])
+    for group in groups:
+        group_jobs = group["jobs"]
+        if len(group_jobs) == 1:
+            merged.append(group_jobs[0])
             continue
 
         by_source: dict[str, list[dict]] = {}
-        for j in group:
+        for j in group_jobs:
             by_source.setdefault(j["source"], []).append(j)
 
         sorted_sources = sorted(by_source.keys(), key=lambda s: SOURCE_PRIORITY.get(s, 9))
