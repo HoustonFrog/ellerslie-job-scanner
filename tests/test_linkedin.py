@@ -1,4 +1,6 @@
 import sys, os
+from pathlib import Path
+from types import SimpleNamespace
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from linkedin import LinkedInJob, parse_job_cards, parse_job_details
@@ -154,3 +156,51 @@ def test_merge_company_name_variants_across_sources():
     assert merged[0]["source"] == "seek+linkedin+career"
     assert merged[0]["linkedin_url"] == "https://linkedin/1"
     assert merged[0]["career_url"] == "https://career/1"
+
+
+def test_codex_enrichment_reads_clean_last_message(monkeypatch):
+    """A regression to Claude/stdout parsing must not break enrichment."""
+    import enrich
+
+    def fake_run(command, **kwargs):
+        assert command[:2] == ["codex", "exec"]
+        output_path = Path(command[command.index("-o") + 1])
+        output_path.write_text('[{"index": 0, "summary": "Test summary"}]')
+        return SimpleNamespace(returncode=0, stdout="Codex session metadata")
+
+    monkeypatch.setattr(enrich.subprocess, "run", fake_run)
+
+    result = enrich._call_codex_enrich([
+        {"index": 0, "title": "Accountant", "company": "Acme", "url": "https://example.test/job"}
+    ])
+
+    assert result == [{"index": 0, "summary": "Test summary"}]
+
+
+def test_company_discovery_uses_codex_last_message(monkeypatch, tmp_path):
+    """Company discovery must consume Codex's clean output artifact."""
+    import scanner
+
+    companies_file = tmp_path / "companies.yml"
+
+    def fake_run(command, **kwargs):
+        assert command[:2] == ["codex", "exec"]
+        output_path = Path(command[command.index("-o") + 1])
+        output_path.write_text(
+            'companies:\n'
+            '  - name: "Acme"\n'
+            '    location: "Ellerslie"\n'
+            '    industry: "Services"\n'
+            '    careers_url: ""\n'
+            '    enabled: true\n'
+        )
+        return SimpleNamespace(returncode=0, stdout="Codex session metadata")
+
+    monkeypatch.setattr(scanner, "COMPANIES_FILE", companies_file)
+    monkeypatch.setattr(scanner.subprocess, "run", fake_run)
+
+    scanner.cmd_discover()
+
+    saved = companies_file.read_text()
+    assert 'name: "Acme"' in saved
+    assert "Codex session metadata" not in saved

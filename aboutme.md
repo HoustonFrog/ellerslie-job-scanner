@@ -41,7 +41,7 @@ scanner.py scan
   ├─ [3/7] Career Pages ─────── 84 companies, HTTP scraping
   ├─ [4/7] Filter ───────────── Title matching, agency blocklist, dedup
   ├─ [5/7] Fetch Details ────── Full job descriptions from Seek & LinkedIn
-  ├─ [6/7] Enrich ───────────── Claude AI batch analysis (scoring, salary, suburb)
+  ├─ [6/7] Enrich ───────────── ChatGPT via Codex CLI (scoring, salary, suburb)
   └─ [7/7] Report ───────────── HTML generation + WhatsApp notification
 ```
 
@@ -59,7 +59,7 @@ ellerslie job/
 ├── seek.py             # Seek NZ scraper (Playwright)
 ├── linkedin.py         # LinkedIn Guest API scraper
 ├── careers.py          # Company career page scraper
-├── enrich.py           # Claude AI enrichment (scoring, salary, suburb)
+├── enrich.py           # ChatGPT/Codex enrichment (scoring, salary, suburb)
 ├── report.py           # HTML report generator
 ├── config.py           # Keywords, locations, weights, constants
 ├── companies.yml       # 84 companies registry with locations
@@ -94,13 +94,13 @@ python scanner.py discover
 ## Requirements
 
 - Python 3.9+
-- [Claude CLI](https://docs.anthropic.com/en/docs/claude-cli) (`claude -p`) for AI enrichment
+- [Codex CLI](https://developers.openai.com/codex/cli/) logged in with ChatGPT (`codex login`) for AI enrichment
 - Playwright + Chromium for Seek scraping
 - WhatsApp Bridge API at `localhost:8080` (optional, for notifications)
 
 ## Tech Stack
 
 - **Scraping**: Playwright (Seek), urllib + regex (LinkedIn), requests + BeautifulSoup (Career Pages)
-- **AI Enrichment**: Claude CLI (`claude -p --model sonnet`) — batched in groups of 15
+- **AI Enrichment**: ChatGPT via Codex CLI (`codex exec`) — batched in groups of 15
 - **Report**: Pure HTML/CSS/JS, no framework — dark mode, responsive, print-friendly
 - **Notification**: WhatsApp Bridge HTTP API

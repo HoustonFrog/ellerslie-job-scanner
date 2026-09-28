@@ -6,6 +6,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -263,26 +264,31 @@ companies:
     careers_url: ""
     enabled: true"""
 
-    print("Discovering companies via claude -p...")
+    print("Discovering companies via codex exec...")
+    with tempfile.NamedTemporaryFile(prefix="codex-discover-", suffix=".txt", delete=False) as tmp:
+        last_message_file = Path(tmp.name)
     try:
         result = subprocess.run(
-            ["claude", "-p", prompt, "--model", "sonnet"],
+            ["codex", "exec", prompt, "-s", "read-only", "-o", str(last_message_file)],
             capture_output=True,
             text=True,
             timeout=300,
         )
     except (FileNotFoundError, subprocess.TimeoutExpired) as e:
         print(f"Error: {e}")
-        print("Please install Claude CLI or run manually.")
+        print("Please install Codex CLI or run manually.")
+        last_message_file.unlink(missing_ok=True)
         _write_template_companies()
         return
 
     if result.returncode != 0:
-        print(f"Warning: claude -p failed, writing template file")
+        print(f"Warning: codex exec failed, writing template file")
+        last_message_file.unlink(missing_ok=True)
         _write_template_companies()
         return
 
-    output = result.stdout.strip()
+    output = last_message_file.read_text().strip()
+    last_message_file.unlink(missing_ok=True)
     yaml_match = None
     if output.startswith("companies:"):
         yaml_match = output
@@ -304,7 +310,7 @@ companies:
         except yaml.YAMLError:
             pass
 
-    print("Could not parse Claude response, writing template file")
+    print("Could not parse Codex response, writing template file")
     _write_template_companies()
 
 
@@ -553,7 +559,7 @@ def main():
 
     scan_parser = subparsers.add_parser("scan", help="Scan for jobs and generate report")
     scan_parser.add_argument("--dry-run", action="store_true", help="Preview without enrichment or report")
-    scan_parser.add_argument("--no-enrich", action="store_true", help="Skip Claude enrichment")
+    scan_parser.add_argument("--no-enrich", action="store_true", help="Skip Codex enrichment")
 
     args = parser.parse_args()
 

@@ -1,8 +1,10 @@
 import json
 import re
 import subprocess
+import tempfile
 from dataclasses import dataclass, field
 from datetime import date
+from pathlib import Path
 
 import config
 
@@ -140,8 +142,8 @@ def _default_enrichment(job: dict) -> EnrichedJob:
 ENRICH_BATCH_SIZE = 15
 
 
-def _call_claude_enrich(jobs_input: list) -> list:
-    """Call claude -p for a batch of jobs, return parsed enrichments or []."""
+def _call_codex_enrich(jobs_input: list) -> list:
+    """Call codex exec for a batch of jobs, return parsed enrichments or []."""
     prompt = f"""You are a job listing analyst helping someone find accounting/finance roles in Auckland NZ.
 
 For each job below, provide:
@@ -161,25 +163,31 @@ Jobs:
 Respond with ONLY a JSON array, no markdown fences:
 [{{"index": 0, "summary": "...", "company_intro": "...", "job_type": "...", "contract_term": "permanent", "score_relevance": 4, "score_company": 3, "score_experience": 4, "salary_range": "$65,000 - $80,000", "suburb": "Penrose"}}]"""
 
+    with tempfile.NamedTemporaryFile(prefix="codex-enrich-", suffix=".txt", delete=False) as tmp:
+        last_message_file = Path(tmp.name)
     try:
         result = subprocess.run(
-            ["claude", "-p", prompt, "--model", "sonnet"],
+            ["codex", "exec", prompt, "-s", "read-only", "-o", str(last_message_file)],
             capture_output=True,
             text=True,
             timeout=300,
         )
     except FileNotFoundError:
-        print("    Warning: claude CLI not found")
+        print("    Warning: codex CLI not found")
+        last_message_file.unlink(missing_ok=True)
         return []
     except subprocess.TimeoutExpired:
         print("    Warning: batch timed out")
+        last_message_file.unlink(missing_ok=True)
         return []
 
     if result.returncode != 0:
-        print(f"    Warning: claude -p failed (exit {result.returncode})")
+        print(f"    Warning: codex exec failed (exit {result.returncode})")
+        last_message_file.unlink(missing_ok=True)
         return []
 
-    output = result.stdout.strip()
+    output = last_message_file.read_text().strip()
+    last_message_file.unlink(missing_ok=True)
     output = re.sub(r"^```json\s*", "", output)
     output = re.sub(r"\s*```$", "", output)
 
@@ -197,7 +205,7 @@ Respond with ONLY a JSON array, no markdown fences:
 
 
 def enrich_jobs(jobs: list) -> list:
-    """Batch-enrich jobs via claude -p in chunks of ENRICH_BATCH_SIZE."""
+    """Batch-enrich jobs via codex exec in chunks of ENRICH_BATCH_SIZE."""
     if not jobs:
         return []
 
@@ -218,7 +226,7 @@ def enrich_jobs(jobs: list) -> list:
         end = min(start + ENRICH_BATCH_SIZE, len(jobs_input))
         batch = jobs_input[start:end]
         print(f"    Batch {batch_num + 1}/{total_batches} ({len(batch)} jobs)...")
-        results = _call_claude_enrich(batch)
+        results = _call_codex_enrich(batch)
         for e in results:
             if isinstance(e, dict) and "index" in e:
                 enrichment_map[e["index"]] = e
@@ -227,8 +235,8 @@ def enrich_jobs(jobs: list) -> list:
     for i, job in enumerate(jobs):
         e = enrichment_map.get(i, {})
         seek_work_type = _normalize_work_type(job.get("work_type", ""))
-        claude_job_type = e.get("job_type", "unknown")
-        job_type = seek_work_type if seek_work_type != "unknown" else claude_job_type
+        codex_job_type = e.get("job_type", "unknown")
+        job_type = seek_work_type if seek_work_type != "unknown" else codex_job_type
 
         contract_term = _normalize_contract_term(e.get("contract_term", ""))
 
