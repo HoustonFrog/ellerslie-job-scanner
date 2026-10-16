@@ -17,6 +17,20 @@ POSITIVE_KEYWORDS = [
     "finance manager",
 ]
 
+# Professional facts from the resume supplied on 17 October 2026.
+# Deliberately excludes the candidate's name, past employer names and contact details.
+CODEX_ENRICH_MODEL = "gpt-6-sol"
+CODEX_ENRICH_REASONING_EFFORT = "medium"
+
+CANDIDATE_PROFILE = {
+    "qualifications": "CPA Australia, CMA, Master of Professional Accounting with Distinction (University of Auckland)",
+    "experience": "Head of Accounting and Finance (2021-2025); Audit Manager at a large international accounting firm (2010-2018), including a two-year US secondment; multinational consulting and current NZ tax research consulting",
+    "strengths": "Programme budgets, forecasting, budget-versus-actual analysis, month-end close, management reporting, financial controls, audit trails, cross-cultural stakeholder communication",
+    "systems": "Advanced Excel, financial modelling, Power BI, Xero, general ERP experience",
+    "goal": "Hands-on part-time accounting or programme finance work near Ellerslie School; senior experience does not rule out hands-on roles",
+    "evidence_limits": "No explicit evidence of end-to-end NZ payroll, SAP/Esker/HFM/Oracle/MYOB Advanced, infrastructure asset accounting or donor acquittal experience. Do not claim these skills. NZ tax study and consulting are not proof of hands-on GST/FBT/PAYE processing.",
+}
+
 AGENCY_BLOCKLIST = [
     "hays",
     "robert half",

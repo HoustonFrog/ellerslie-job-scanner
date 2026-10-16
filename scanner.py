@@ -181,8 +181,8 @@ def _company_names_match(a: str, b: str) -> bool:
     Sources report different name variants for the same company, e.g.
     Seek says "Mercury", LinkedIn says "Mercury NZ", and a career page
     (named per companies.yml) says "Mercury NZ (Mercury Energy)"."""
-    a, b = a.lower(), b.lower()
-    return a in b or b in a
+    a, b = a.lower().strip(), b.lower().strip()
+    return bool(a and b) and (a in b or b in a)
 
 
 def _merge_duplicates(jobs: list[dict]) -> list[dict]:
@@ -548,7 +548,8 @@ def cmd_scan(dry_run: bool = False, no_enrich: bool = False):
 
     # 9. Update history
     save_history(history, new_jobs)
-    print(f"\nDone. {len(enriched)} new jobs in report.")
+    report_new_count = sum(j.is_new for j in enriched)
+    print(f"\nDone. {len(enriched)} jobs in report ({report_new_count} new).")
 
 
 def main():

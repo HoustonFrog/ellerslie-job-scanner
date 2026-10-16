@@ -24,12 +24,40 @@ Six weighted dimensions, each scored 1–5:
 |-----------|--------|------------------|
 | Proximity | 30% | Distance from Ellerslie School (134 Main Highway) |
 | Relevance | 20% | Match to core accounting/finance work |
-| Experience | 15% | Suitability for mid-level professional (2–5 years) |
+| Experience | 15% | Fit to the candidate's senior accounting background, hands-on part-time goal and specialist skill gaps |
 | Company | 15% | Company quality and career growth potential |
 | Salary | 10% | Competitiveness of compensation |
 | Stability | 10% | Permanent vs fixed-term/contract |
 
 Weighted total (max 5.0) determines ranking in the report.
+
+## Candidate and recommendations
+
+`config.CANDIDATE_PROFILE` contains professional facts from the resume supplied on 17 October 2026: CPA Australia, CMA, University of Auckland MProfAcct with Distinction, finance leadership, international accounting firm audit and multinational experience, Excel, Power BI and Xero. It excludes the candidate's name, past employer names and contact details. Each card includes concise Chinese and English explanations of the company's business, main duties, candidate fit and any important mismatch, addressing the candidate as "you". Company and salary information must come from the listing; undisclosed salaries remain empty.
+
+The 15 October report's recommendations and experience-fit scores were reviewed against that resume. Its other original scoring dimensions and data period were preserved.
+
+## Offline report updates
+
+The presentation is in `templates/report.html`. Both published HTML files are self-contained, with no external font or script dependencies. Search, area filters, new-only filtering, sorting and appearance work locally.
+
+The top-right Chinese/English selector changes the interface, job titles and recommendation text without resetting filters or open details. It remembers the selection locally. Complete job descriptions remain labelled English originals. The interface dictionary in `templates/report-i18n.js` is embedded into the generated HTML; no separate script needs to be hosted. AI enrichment supplies `title_zh`, `recommendation_reason` and `recommendation_reason_en`.
+
+Job analysis uses the project-level `CODEX_ENRICH_MODEL` and `CODEX_ENRICH_REASONING_EFFORT` settings in `config.py`, independently of the desktop app's selected model. The compatible `gpt-6-sol` model was verified with the signed-in account on 17 October 2026. Calls use read-only ephemeral sessions and clean last-message output.
+
+To rebuild from saved listings without scraping, AI calls, scan-history updates or notifications:
+
+```bash
+python3 report.py --snapshot output/jobs-snapshot.json
+```
+
+This preserves the original report date and refreshes both `output/ellerslie-jobs.html` and `index.html`. `generate_report` saves the snapshot on future normal scans too. Annual salary sorting uses the lower advertised amount (or the maximum for "up to" offers), with hourly rates sorted separately afterward; it does not infer annual pay from hourly rates or prorate FTE salaries.
+
+Local review server, restricted to the report page on loopback:
+
+```bash
+python3 scripts/preview_report.py
+```
 
 ## Pipeline
 

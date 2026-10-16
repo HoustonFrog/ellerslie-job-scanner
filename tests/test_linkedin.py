@@ -142,6 +142,14 @@ def test_merge_different_companies_not_merged():
     assert len(merged) == 2
 
 
+def test_missing_company_does_not_merge_unrelated_roles():
+    jobs = [
+        {"title": "Finance Manager", "company": "", "source": "seek", "url": "https://seek/1"},
+        {"title": "Finance Manager", "company": "Evolution Healthcare", "source": "linkedin", "url": "https://linkedin/1"},
+    ]
+    assert len(_merge_duplicates(jobs)) == 2
+
+
 def test_merge_company_name_variants_across_sources():
     # Seek, LinkedIn, and a company's own career page each report the company
     # name differently (e.g. "Mercury" / "Mercury NZ" / "Mercury NZ (Mercury Energy)").
